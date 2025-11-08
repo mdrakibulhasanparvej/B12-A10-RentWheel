@@ -15,11 +15,7 @@ const Footer = () => {
         {/* Logo & Description */}
         <div>
           <div className="flex items-center mb-4">
-            <img
-              src="/car-icon.svg"
-              alt="RENT WHEEL"
-              className="w-6 h-6 mr-2"
-            />
+            <img src="/logo.png" alt="RENT WHEEL" className="w-6 h-6 mr-2" />
             <h2 className="text-lg font-semibold">RENT WHEEL</h2>
           </div>
           <p className="text-sm text-gray-600 mb-4">
@@ -39,7 +35,7 @@ const Footer = () => {
           <h3 className="font-semibold mb-3">Address</h3>
           <div className="flex items-start space-x-3">
             <FaMapMarkerAlt className="text-orange-500 mt-1" />
-            <p className="text-sm">Oxford Ave. Cary, NC 27511</p>
+            <p className="text-sm">A-79, Savar , Dhaka-1340 </p>
           </div>
         </div>
 
@@ -48,11 +44,11 @@ const Footer = () => {
           <h3 className="font-semibold mb-3">Contact</h3>
           <div className="flex items-start space-x-3 mb-2">
             <FaEnvelope className="text-orange-500 mt-1" />
-            <p className="text-sm">nwiger@yahoo.com</p>
+            <p className="text-sm">mdrakibulhasan@gmail.com</p>
           </div>
           <div className="flex items-start space-x-3">
             <FaPhoneAlt className="text-orange-500 mt-1" />
-            <p className="text-sm">+537 547-6401</p>
+            <p className="text-sm">+880 12345 67890</p>
           </div>
         </div>
 
@@ -73,12 +69,12 @@ const Footer = () => {
           <h3 className="font-semibold mb-3">Download App</h3>
           <div className="space-y-3">
             <img
-              src="/app-store.png"
+              src="/apple_app_store.png"
               alt="App Store"
               className="w-36 cursor-pointer hover:opacity-80"
             />
             <img
-              src="/google-play.png"
+              src="/Google_Play.png"
               alt="Google Play"
               className="w-36 cursor-pointer hover:opacity-80"
             />
@@ -88,7 +84,8 @@ const Footer = () => {
 
       {/* Copyright */}
       <div className="text-center text-gray-500 text-sm mt-10 border-t pt-5">
-        © Copyright RENT WHEEL 2024. Design by Figma.guru
+        © Copyright RENT WHEEL {new Date().getFullYear()}. All Right Reserver By
+        Rent Wheel
       </div>
     </footer>
   );
