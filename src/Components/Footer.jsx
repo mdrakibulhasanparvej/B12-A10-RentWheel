@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-gray-800 py-10 border-t border-gray-200">
+    <footer className="bg-white text-gray-800 py-10 border-t border-gray-200 ">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
         {/* Logo & Description */}
         <div>
@@ -71,12 +71,12 @@ const Footer = () => {
             <img
               src="/apple_app_store.png"
               alt="App Store"
-              className="w-36 cursor-pointer hover:opacity-80"
+              className="w-50 cursor-pointer hover:opacity-80"
             />
             <img
               src="/Google_Play.png"
               alt="Google Play"
-              className="w-36 cursor-pointer hover:opacity-80"
+              className="w-50 cursor-pointer hover:opacity-80"
             />
           </div>
         </div>

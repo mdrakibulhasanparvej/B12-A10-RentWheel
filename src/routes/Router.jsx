@@ -9,10 +9,14 @@ import BrowseCars from "../pages/BrowseCars";
 import DashLayout from "../layouts/DashLayout";
 import MyProfile from "../pages/MyProfile";
 import MyBooking from "../pages/MyBooking";
-import MyListings from "../pages/MyListings";
+
 import AddCar from "../pages/AddCar";
 import CarDetails from "../pages/CarDetails";
 import Error_404 from "../pages/error/Error_404";
+import AboutUs from "../pages/AboutUs";
+import ContactUs from "../pages/ContactUs";
+import MyListing from "../pages/MyListing";
+import OverView from "../pages/OverView";
 
 const router = createBrowserRouter([
   {
@@ -28,6 +32,14 @@ const router = createBrowserRouter([
         path: "/all-cars",
         Component: BrowseCars,
       },
+      {
+        path: "/aboutus",
+        Component: AboutUs,
+      },
+      {
+        path: "/contactus",
+        Component: ContactUs,
+      },
     ],
   },
   {
@@ -35,11 +47,11 @@ const router = createBrowserRouter([
     element: <AuthLayOut />,
     children: [
       {
-        path: "login",
+        path: "/auth/login",
         element: <Login />,
       },
       {
-        path: "register",
+        path: "/auth/register",
         element: <Register />,
       },
     ],
@@ -49,19 +61,23 @@ const router = createBrowserRouter([
     Component: DashLayout,
     children: [
       {
-        path: "myprofile",
+        path: "/dashboard/overview",
+        Component: OverView,
+      },
+      {
+        path: "/dashboard/myprofile",
         Component: MyProfile,
       },
       {
-        path: "mybooking",
+        path: "/dashboard/mybooking",
         Component: MyBooking,
       },
       {
-        Path: "mylisting",
-        Component: MyListings,
+        path: "/dashboard/mylistings",
+        Component: MyListing,
       },
       {
-        path: "add_car",
+        path: "/dashboard/add_car",
         Component: AddCar,
       },
     ],

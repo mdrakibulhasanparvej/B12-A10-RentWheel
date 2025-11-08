@@ -1,10 +1,11 @@
 // import React, { use } from "react";
 import { Link, NavLink } from "react-router";
-import MyLinks from "./MyLinks";
 // import { AuthContext } from "../providers/AuthProvider";
 import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { PiPhoneCallFill } from "react-icons/pi";
 import { IoLogoWhatsapp } from "react-icons/io";
+import MyLinks from "./MyLinks";
+
 // import { toast } from "react-toastify";
 
 const Navbar = () => {
@@ -28,6 +29,26 @@ const Navbar = () => {
   //     });
   // };
 
+  const links = (
+    <>
+      <li>
+        <MyLinks to="/">Home</MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/all-cars">All Cars</MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/aboutus">About Us</MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/contactus">Contact Us</MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/dashboard">Dashboard</MyLinks>
+      </li>
+    </>
+  );
+
   return (
     <div className="relative">
       <div className="py-1 flex justify-between items-center px-5 md:px-10">
@@ -40,7 +61,7 @@ const Navbar = () => {
             <span>
               <IoLogoWhatsapp />
             </span>{" "}
-            HOT LINE: +971558009990
+            +971558009990
           </h2>
         </div>
         <div className="leftsiede">
@@ -54,13 +75,13 @@ const Navbar = () => {
           {/* ) : ( */}
           <div className="flex gap-2">
             <NavLink
-              to="/auth/signin"
+              to="/auth/login"
               className="hover:border-b-2 hover:border-white hover:cursor-pointer"
             >
               Login
             </NavLink>
             <NavLink
-              to="/auth/signup"
+              to="/auth/register"
               className="hover:border-b-2 hover:border-white hover:cursor-pointer"
             >
               Register
@@ -98,15 +119,7 @@ const Navbar = () => {
               tabIndex="-1"
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <MyLinks to="/">Home</MyLinks>
-              </li>
-              <li>
-                <MyLinks to="/shops">Shop</MyLinks>
-              </li>
-              <li>
-                <MyLinks to="/myProfile">My Profile</MyLinks>
-              </li>
+              {links}
             </ul>
           </div>
           <Link to="/" className="text-2xl  font-extrabold">
@@ -115,17 +128,7 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-center hidden lg:flex">
-          <ul className="font-bold menu menu-horizontal px-1">
-            <li>
-              <MyLinks to="/">Home</MyLinks>
-            </li>
-            <li>
-              <MyLinks to="/shops">Shop</MyLinks>
-            </li>
-            <li>
-              <MyLinks to="/myProfile">My Profile</MyLinks>
-            </li>
-          </ul>
+          <ul className="font-bold menu menu-horizontal px-1">{links}</ul>
         </div>
 
         <div className="navbar-end gap-2">
