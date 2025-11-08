@@ -1,9 +1,12 @@
 import React from "react";
+import HeroSection from "./HeroSection";
+import FeaturedCars from "./FeaturedCars";
 
 const Home = () => {
   return (
     <div className="min-h-screen">
-      <h2>Home will go here</h2>
+      <HeroSection />
+      <FeaturedCars />
     </div>
   );
 };
