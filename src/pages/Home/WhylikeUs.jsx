@@ -42,7 +42,7 @@ const cardVariant = {
 
 const WhylikeUs = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-20 bg-white">
+    <section className="py-16 px-4 sm:px-6 lg:px-10 bg-white">
       <motion.h2
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

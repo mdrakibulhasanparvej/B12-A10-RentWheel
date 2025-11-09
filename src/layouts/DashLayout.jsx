@@ -6,13 +6,13 @@ import MyLinks from "../Components/MyLinks";
 
 const DashLayout = () => {
   return (
-    <div>
+    <div className="bg-gray-100">
       <header>
         <Navbar></Navbar>
       </header>
-      <main className="grid grid-cols-12 my-5">
-        <section className="col-span-2 min-h-screen border p-5">
-          <div className="flex flex-col space-y-5">
+      <main className="flex flex-col lg:flex-row mx-auto">
+        <section className="w-full md:w-1/5  md:min-h-screen p-5">
+          <div className="text-[10px] md:text-lg flex md:flex-col gap-5 md:gap-2 space-y-5">
             <MyLinks to="/dashboard/overview">Over View</MyLinks>
             <MyLinks to="/dashboard/myprofile">My Profile</MyLinks>
             <MyLinks to="/dashboard/mybooking">My Booking</MyLinks>
@@ -20,7 +20,7 @@ const DashLayout = () => {
             <MyLinks to="/dashboard/add_car">Add A Car</MyLinks>
           </div>
         </section>
-        <section className="col-span-10 border p-5">
+        <section className="w-full md:w-4/5 p-5">
           <Outlet></Outlet>
         </section>
       </main>

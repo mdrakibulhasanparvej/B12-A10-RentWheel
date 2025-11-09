@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import ReviewCard from "./ReviewCard";
 import { Typewriter } from "react-simple-typewriter";
+import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const ReviewSection = () => {
   const reviews = [
@@ -62,20 +63,20 @@ const ReviewSection = () => {
   const prevReview = () =>
     setIndex((prev) => (prev - 1 + totalGroups) % totalGroups);
 
-  // 👇 Auto-scroll once after load
+  // Auto-scroll every 4 seconds
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setIndex(1);
-    }, 700);
-    return () => clearTimeout(timer);
-  }, []);
+    const interval = setInterval(() => {
+      setIndex((prev) => (prev + 1) % totalGroups);
+    }, 4000);
+    return () => clearInterval(interval);
+  }, [totalGroups]);
 
   return (
     <div className="bg-white dark:bg-gray-900 px-10 mx-auto py-12 transition-colors duration-300">
       <div className="container mx-auto px-4 flex flex-col lg:flex-row gap-8">
         {/* LEFT SIDE */}
         <motion.div
-          className="lg:w-1/3 w-full  top-20 self-start"
+          className="lg:w-1/3 w-full top-20 self-start"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
@@ -83,8 +84,7 @@ const ReviewSection = () => {
           <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-1">
             RENTWHEELS Luxury Car Rental
           </h2>
-          <p className="text-orange-500 font-medium">
-            {" "}
+          <p className="text-orange-500 font-medium h-5">
             <Typewriter
               words={["Dhaka", "Chittagong", "Rajshahi"]}
               loop={true}
@@ -107,7 +107,9 @@ const ReviewSection = () => {
 
         {/* RIGHT SIDE SLIDER */}
         <div className="lg:w-2/3 w-full relative">
-          <div className="overflow-hidden">
+          {/* Top buttons */}
+
+          <div className="relative overflow-hidden">
             <div
               className="flex transition-transform duration-700 ease-out"
               style={{
@@ -119,20 +121,18 @@ const ReviewSection = () => {
               ))}
             </div>
           </div>
-
-          {/* Buttons */}
-          <div className="flex justify-center mt-4 space-x-4">
+          <div className="absolute top-0 left-0 right-0 flex justify-between px-2 z-10">
             <button
               onClick={prevReview}
-              className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-3 py-2 rounded hover:bg-orange-500 hover:text-white transition"
+              className="text-5xl absolute top-15 left-0 dark:bg-gray-700 text-gray-800 dark:text-white py-2 rounded hover:bg-orange-500/20  transition"
             >
-              ⬅ Prev
+              <IoIosArrowBack />
             </button>
             <button
               onClick={nextReview}
-              className="bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-white px-3 py-2 rounded hover:bg-orange-500 hover:text-white transition"
+              className="text-5xl absolute right-0 top-15 dark:bg-gray-700 text-gray-800 dark:text-white py-2 rounded hover:bg-orange-500/20  transition"
             >
-              Next ➡
+              <IoIosArrowForward />
             </button>
           </div>
         </div>

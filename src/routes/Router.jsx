@@ -5,24 +5,24 @@ import Home from "../pages/Home/Home";
 import AuthLayOut from "../layouts/AuthLayOut";
 import Login from "../pages/Auth/Login";
 import Register from "../pages/Auth/Register";
-import BrowseCars from "../pages/BrowseCars";
+import BrowseCars from "../pages/AllCar/BrowseCars";
 import DashLayout from "../layouts/DashLayout";
 import MyProfile from "../pages/MyProfile";
 import MyBooking from "../pages/MyBooking";
-
-import AddCar from "../pages/AddCar";
-import CarDetails from "../pages/CarDetails";
-import Error_404 from "../pages/error/Error_404";
+import CarDetails from "../pages/cardetails/CarDetails";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import MyListing from "../pages/MyListing";
 import OverView from "../pages/OverView";
+import Spinner from "../Components/Spinner";
+import AddNewCar from "../pages/AddNewCar";
+import NotFound from "../pages/error/NotFound";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <MainLayout />,
-    errorElement: Error_404,
+    errorElement: NotFound,
     children: [
       {
         index: true,
@@ -31,6 +31,15 @@ const router = createBrowserRouter([
       {
         path: "/all-cars",
         Component: BrowseCars,
+        loader: () => fetch("http://localhost:5000/cars"),
+        hydrateFallbackElement: <Spinner />,
+      },
+      {
+        path: "/cardetails/:id",
+        Component: CarDetails,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/cars/${params.id}`),
+        hydrateFallbackElement: <Spinner />,
       },
       {
         path: "/aboutus",
@@ -78,17 +87,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/dashboard/add_car",
-        Component: AddCar,
+        Component: AddNewCar,
       },
     ],
   },
   {
-    path: "/car-details",
-    Component: CarDetails,
-  },
-  {
     path: "*",
-    Component: Error_404,
+    Component: NotFound,
   },
 ]);
 

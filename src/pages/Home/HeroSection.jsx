@@ -23,7 +23,7 @@ const HeroSection = () => {
           transition={{ duration: 0.8 }}
         >
           Luxury Car Rental in <br />{" "}
-          <span className="text-orange-500">
+          <span className="text-orange-500 inline-block h-10">
             {" "}
             <Typewriter
               words={["Dhaka", "Chittagong", "Rajshahi"]}
@@ -80,7 +80,7 @@ const HeroSection = () => {
 
         {/* No Deposit Text */}
         <motion.p
-          className="mt-10 text-yellow-400 font-semibold text-lg tracking-wide"
+          className="mt-10 text-orange-500 font-semibold text-lg tracking-wide"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 1.2 }}

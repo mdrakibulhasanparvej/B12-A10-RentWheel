@@ -37,14 +37,23 @@ const Navbar = () => {
       <li>
         <MyLinks to="/all-cars">All Cars</MyLinks>
       </li>
-      <li>
+      {/* <li>
         <MyLinks to="/aboutus">About Us</MyLinks>
       </li>
       <li>
         <MyLinks to="/contactus">Contact Us</MyLinks>
+      </li> */}
+      <li>
+        <MyLinks to="/dashboard/myprofile">My Profile</MyLinks>
       </li>
       <li>
-        <MyLinks to="/dashboard">Dashboard</MyLinks>
+        <MyLinks to="/dashboard/mybooking">My Booking</MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/dashboard/mylistings">My List</MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/dashboard/add_car">Add A Car</MyLinks>
       </li>
     </>
   );
