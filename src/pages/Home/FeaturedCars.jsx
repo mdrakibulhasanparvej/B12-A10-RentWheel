@@ -74,7 +74,7 @@ const FeaturedCars = () => {
               />
 
               {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-transparent transition-opacity duration-500 group-hover:opacity-80"></div>
+              <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent transition-opacity duration-500 group-hover:opacity-100"></div>
 
               {/* Text with arrow */}
             </motion.div>
