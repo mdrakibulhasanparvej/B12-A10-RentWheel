@@ -1,10 +1,13 @@
-// import React, { use } from "react";
+import React from "react";
 import { Link, NavLink } from "react-router";
-// import { AuthContext } from "../providers/AuthProvider";
-import { FaShoppingCart, FaUser } from "react-icons/fa";
 import { PiPhoneCallFill } from "react-icons/pi";
-import { IoLogoWhatsapp } from "react-icons/io";
+import { IoLogIn, IoLogoWhatsapp } from "react-icons/io5";
+import { FaGear } from "react-icons/fa6";
+import { IoLogOutOutline } from "react-icons/io5";
+// import { AuthContext } from "../providers/AuthProvider";
+
 import MyLinks from "./MyLinks";
+import { FaShoppingCart, FaUser } from "react-icons/fa";
 
 // import { toast } from "react-toastify";
 
@@ -43,9 +46,9 @@ const Navbar = () => {
       <li>
         <MyLinks to="/contactus">Contact Us</MyLinks>
       </li> */}
-      <li>
+      {/* <li>
         <MyLinks to="/dashboard/myprofile">My Profile</MyLinks>
-      </li>
+      </li> */}
       <li>
         <MyLinks to="/dashboard/mybooking">My Booking</MyLinks>
       </li>
@@ -132,45 +135,87 @@ const Navbar = () => {
             </ul>
           </div>
           <Link to="/" className="text-2xl  font-extrabold">
-            RENTWHEELS
+            RENT<span className="text-orange-500">WHEELS</span>
           </Link>
         </div>
-
         <div className="navbar-center hidden lg:flex">
           <ul className="font-bold menu menu-horizontal px-1">{links}</ul>
         </div>
+        {/* old user icon */}
 
-        <div className="navbar-end gap-2">
-          {/* User Image */}
-          {/* {user && ( */}
-          <div className="flex items-center gap-10">
-            <span>
-              <Link to="/wishlists">
-                <FaShoppingCart size={28} />
-              </Link>
-            </span>
-            <div className="relative group">
-              <Link to="/myProfile">
+        {/* new user icon */}
+        <div className="navbar-end gap-3">
+          {/* {user ? ( */}
+          <div className="dropdown dropdown-end z-50">
+            <div
+              tabIndex={0}
+              role="button"
+              className="btn btn-ghost btn-circle avatar"
+            >
+              <div className="w-9 border-2 border-gray-300 rounded-full">
                 <img
-                  className="w-12 h-12 rounded-full border-2 border-[#0F83B2] cursor-pointer"
-                  // src={user.photoURL && user.photoURL}
+                  alt="Tailwind CSS Navbar component"
                   referrerPolicy="no-referrer"
-                  alt="user"
+                  src={
+                    // user.photoURL ||
+                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                  }
                 />
-              </Link>
-              {/* Dropdown */}
-              <div
-                className="absolute right-0 top-14 bg-white shadow-lg rounded-lg 
-                 opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 
-                 transition-all duration-200 p-4 z-10
-                 inline-block max-w-xs wrap-break-words"
-              >
-                <p className="font-semibold text-gray-800">
-                  {/* {user.displayName} */}
-                </p>
               </div>
             </div>
+            <ul
+              tabIndex="-1"
+              className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
+            >
+              <div className=" pb-3 border-b border-b-gray-200">
+                {/* <li className="text-sm font-bold">{user.displayName}</li>
+                <li className="text-xs">{user.email}</li> */}
+              </div>
+              <li className="mt-3">
+                <Link to={"/profile"}>
+                  <FaUser /> Profile
+                </Link>
+              </li>
+
+              <li>
+                <Link to={"/my-models"}>My Models</Link>
+              </li>
+
+              <li>
+                <Link to={"/my-downloads"}>My Downloads</Link>
+              </li>
+
+              <input
+                // onChange={(e) => handleTheme(e.target.checked)}
+                type="checkbox"
+                // defaultChecked={localStorage.getItem("theme") === "dark"}
+                className="toggle"
+              />
+
+              <li>
+                <a>
+                  {" "}
+                  <FaGear /> Settings
+                </a>
+              </li>
+              <li>
+                <button
+                  // onClick={signOutUser}
+                  className="btn btn-xs text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
+                >
+                  <IoLogOutOutline /> Logout
+                </button>
+              </li>
+            </ul>
           </div>
+          {/* ) : ( */}
+          <Link
+            to={"/auth/login"}
+            className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
+          >
+            {" "}
+            <IoLogIn /> Login
+          </Link>
           {/* )} */}
         </div>
       </div>
@@ -179,3 +224,37 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+// <div className="navbar-end gap-2">
+//   {/* User Image */}
+//   {/* {user && ( */}
+//   <div className="flex items-center gap-10">
+//     <span>
+//       <Link to="/wishlists">
+//         <FaShoppingCart size={28} />
+//       </Link>
+//     </span>
+//     <div className="relative group">
+//       <Link to="/myProfile">
+//         <img
+//           className="w-12 h-12 rounded-full border-2 border-[#0F83B2] cursor-pointer"
+//           // src={user.photoURL && user.photoURL}
+//           referrerPolicy="no-referrer"
+//           alt="user"
+//         />
+//       </Link>
+//       {/* Dropdown */}
+//       <div
+//         className="absolute right-0 top-14 bg-white shadow-lg rounded-lg
+//          opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100
+//          transition-all duration-200 p-4 z-10
+//          inline-block max-w-xs wrap-break-words"
+//       >
+//         <p className="font-semibold text-gray-800">
+//           {/* {user.displayName} */}
+//         </p>
+//       </div>
+//     </div>
+//   </div>
+//   {/* )} */}
+// </div>

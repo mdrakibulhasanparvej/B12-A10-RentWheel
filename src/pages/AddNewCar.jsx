@@ -62,45 +62,180 @@ const AddNewCar = () => {
   };
 
   return (
-    <div className="max-w-4xl mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
-      <h2 className="text-2xl font-bold mb-6 text-center text-gray-800">
-        Add New Car
-      </h2>
+    <div>
+      <div className="mb-6">
+        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
+          Add New Car
+        </h2>
+        <p className="text-gray-500 dark:text-gray-400 text-sm">
+          Add new car for our company.
+        </p>
+      </div>
 
-      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <input type="text" name="name" placeholder="Car Name" className="input input-bordered w-full" required />
-        <input type="text" name="image_url" placeholder="Image URL" className="input input-bordered w-full" required />
-        <input type="text" name="deposit" placeholder="Deposit" className="input input-bordered w-full" required />
-        <input type="text" name="mileage_limit" placeholder="Mileage Limit" className="input input-bordered w-full" required />
-        <input type="text" name="extra_mileage" placeholder="Extra Mileage" className="input input-bordered w-full" />
-        <input type="text" name="payment" placeholder="Payment Options" className="input input-bordered w-full" />
-        <input type="text" name="color" placeholder="Color" className="input input-bordered w-full" />
-        <input type="text" name="transmission" placeholder="Transmission" className="input input-bordered w-full" />
-        <input type="text" name="car_type" placeholder="Car Type" className="input input-bordered w-full" />
-        <input type="text" name="engine" placeholder="Engine" className="input input-bordered w-full" />
-        <input type="number" name="seats" placeholder="Seats" className="input input-bordered w-full" />
-        <input type="number" name="doors" placeholder="Doors" className="input input-bordered w-full" />
-        <input type="text" name="zero_to_hundred" placeholder="0-100 Time" className="input input-bordered w-full" />
-        <input type="text" name="drive" placeholder="Drive" className="input input-bordered w-full" />
-        <input type="text" name="fuel" placeholder="Fuel" className="input input-bordered w-full" />
-        <input type="text" name="luggage" placeholder="Luggage" className="input input-bordered w-full" />
-        <input type="number" name="daily" placeholder="Daily Price" className="input input-bordered w-full" />
-        <input type="text" name="weekly" placeholder="Weekly Price" className="input input-bordered w-full" />
-        <input type="text" name="monthly" placeholder="Monthly Price" className="input input-bordered w-full" />
-        <input type="text" name="booking_status" placeholder="Booking Status" className="input input-bordered w-full" />
-        <input type="text" name="category" placeholder="Category (sport/suv/etc)" className="input input-bordered w-full" />
-        <input type="text" name="brand" placeholder="Brand" className="input input-bordered w-full" />
-        <input type="text" name="model" placeholder="Model" className="input input-bordered w-full" />
-        <input type="number" name="rating" placeholder="Rating" className="input input-bordered w-full" step="0.1" />
-
-        <button
-          type="submit"
-          disabled={loading}
-          className="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded mt-4"
+      <div className=" mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
         >
-          {loading ? "Adding..." : "Add Car"}
-        </button>
-      </form>
+          <input
+            type="text"
+            name="name"
+            placeholder="Car Name"
+            className="input input-bordered w-full"
+            required
+          />
+          <input
+            type="text"
+            name="image_url"
+            placeholder="Image URL"
+            className="input input-bordered w-full"
+            required
+          />
+          <input
+            type="text"
+            name="deposit"
+            placeholder="Deposit"
+            className="input input-bordered w-full"
+            required
+          />
+          <input
+            type="text"
+            name="mileage_limit"
+            placeholder="Mileage Limit"
+            className="input input-bordered w-full"
+            required
+          />
+          <input
+            type="text"
+            name="extra_mileage"
+            placeholder="Extra Mileage"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="payment"
+            placeholder="Payment Options"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="color"
+            placeholder="Color"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="transmission"
+            placeholder="Transmission"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="car_type"
+            placeholder="Car Type"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="engine"
+            placeholder="Engine"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="number"
+            name="seats"
+            placeholder="Seats"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="number"
+            name="doors"
+            placeholder="Doors"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="zero_to_hundred"
+            placeholder="0-100 Time"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="drive"
+            placeholder="Drive"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="fuel"
+            placeholder="Fuel"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="luggage"
+            placeholder="Luggage"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="number"
+            name="daily"
+            placeholder="Daily Price"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="weekly"
+            placeholder="Weekly Price"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="monthly"
+            placeholder="Monthly Price"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="booking_status"
+            placeholder="Booking Status"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="category"
+            placeholder="Category (sport/suv/etc)"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="brand"
+            placeholder="Brand"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="text"
+            name="model"
+            placeholder="Model"
+            className="input input-bordered w-full"
+          />
+          <input
+            type="number"
+            name="rating"
+            placeholder="Rating"
+            className="input input-bordered w-full"
+            step="0.1"
+          />
+
+          <button
+            type="submit"
+            disabled={loading}
+            className="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded mt-4"
+          >
+            {loading ? "Adding..." : "Add Car"}
+          </button>
+        </form>
+      </div>
     </div>
   );
 };
