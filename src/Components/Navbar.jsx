@@ -1,36 +1,34 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
 import { PiPhoneCallFill } from "react-icons/pi";
 import { IoLogIn, IoLogoWhatsapp } from "react-icons/io5";
 import { FaGear } from "react-icons/fa6";
 import { IoLogOutOutline } from "react-icons/io5";
-// import { AuthContext } from "../providers/AuthProvider";
-
 import MyLinks from "./MyLinks";
-import { FaShoppingCart, FaUser } from "react-icons/fa";
-
-// import { toast } from "react-toastify";
+import { FaUser } from "react-icons/fa";
+import { AuthContext } from "../proviedrs/AuthProvider";
+import { toast } from "react-toastify";
 
 const Navbar = () => {
-  // const { user, logout } = use(AuthContext);
+  const { user, logout } = useContext(AuthContext);
 
-  // const handleLogout = () => {
-  //   logout()
-  //     .then(() => {
-  //       toast.success("🎉 Log out successful!", {
-  //         position: "top-right",
-  //         autoClose: 2000,
-  //         theme: "colored",
-  //       });
-  //     })
-  //     .catch((error) => {
-  //       toast.error(`An Error: ${error.message}`, {
-  //         position: "top-right",
-  //         autoClose: 2000,
-  //         theme: "colored",
-  //       });
-  //     });
-  // };
+  const handleLogout = () => {
+    logout()
+      .then(() => {
+        toast.success("🎉 Log out successful!", {
+          position: "top-right",
+          autoClose: 2000,
+          theme: "colored",
+        });
+      })
+      .catch((error) => {
+        toast.error(`An Error: ${error.message}`, {
+          position: "top-right",
+          autoClose: 2000,
+          theme: "colored",
+        });
+      });
+  };
 
   const links = (
     <>
@@ -76,31 +74,34 @@ const Navbar = () => {
             +971558009990
           </h2>
         </div>
-        <div className="leftsiede">
-          {/* {user ? ( */}
-          <button
-            // onClick={handleLogout}
-            className="hover:border-b-2 hover:border-white hover:cursor-pointer"
-          >
-            Logout
-          </button>
-          {/* ) : ( */}
-          <div className="flex gap-2">
-            <NavLink
-              to="/auth/login"
+
+        {/* login logout toggle */}
+
+        {/* <div className="leftsiede">
+          {user ? (
+            <button
+              onClick={handleLogout}
               className="hover:border-b-2 hover:border-white hover:cursor-pointer"
             >
-              Login
-            </NavLink>
-            <NavLink
-              to="/auth/register"
-              className="hover:border-b-2 hover:border-white hover:cursor-pointer"
-            >
-              Register
-            </NavLink>
-          </div>
-          {/* )} */}
-        </div>
+              Logout
+            </button>
+          ) : (
+            <div className="flex gap-2">
+              <NavLink
+                to="/auth/login"
+                className="hover:border-b-2 hover:border-white hover:cursor-pointer"
+              >
+                Login
+              </NavLink>
+              <NavLink
+                to="/auth/Signup"
+                className="hover:border-b-2 hover:border-white hover:cursor-pointer"
+              >
+                Signup
+              </NavLink>
+            </div>
+          )}
+        </div> */}
       </div>
 
       <div className="navbar sticky top-0 z-50 bg-base-100 pr-5 md:px-10 text-gray-600 border-b border-gray-300 shadow-md">
@@ -141,82 +142,76 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="font-bold menu menu-horizontal px-1">{links}</ul>
         </div>
-        {/* old user icon */}
 
         {/* new user icon */}
         <div className="navbar-end gap-3">
-          {/* {user ? ( */}
-          <div className="dropdown dropdown-end z-50">
-            <div
-              tabIndex={0}
-              role="button"
-              className="btn btn-ghost btn-circle avatar"
-            >
-              <div className="w-9 border-2 border-gray-300 rounded-full">
-                <img
-                  alt="Tailwind CSS Navbar component"
-                  referrerPolicy="no-referrer"
-                  src={
-                    // user.photoURL ||
-                    "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
-                  }
+          {user ? (
+            <div className="dropdown dropdown-end z-50">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost btn-circle avatar"
+              >
+                <div className="w-9 border-2 border-gray-300 rounded-full">
+                  <img
+                    alt="Tailwind CSS Navbar component"
+                    referrerPolicy="no-referrer"
+                    src={
+                      user.photoURL ||
+                      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                    }
+                  />
+                </div>
+              </div>
+              <ul
+                tabIndex="-1"
+                className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-60 p-2 shadow"
+              >
+                <div className=" pb-3 border-b border-b-gray-200">
+                  <li className="text-sm font-bold">{user.displayName}</li>
+                  <li className="text-xs">{user.email}</li>
+                </div>
+                {links}
+
+                <input
+                  // onChange={(e) => handleTheme(e.target.checked)}
+                  type="checkbox"
+                  // defaultChecked={localStorage.getItem("theme") === "dark"}
+                  className="toggle"
                 />
-              </div>
+
+                <li>
+                  <a>
+                    {" "}
+                    <FaGear /> Settings
+                  </a>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogout}
+                    className="btn btn-xs text-left bg-linear-to-br from-orange-500 to-yellow-400 text-white"
+                  >
+                    <IoLogOutOutline /> Logout
+                  </button>
+                </li>
+              </ul>
             </div>
-            <ul
-              tabIndex="-1"
-              className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-52 p-2 shadow"
-            >
-              <div className=" pb-3 border-b border-b-gray-200">
-                {/* <li className="text-sm font-bold">{user.displayName}</li>
-                <li className="text-xs">{user.email}</li> */}
-              </div>
-              <li className="mt-3">
-                <Link to={"/profile"}>
-                  <FaUser /> Profile
-                </Link>
-              </li>
-
-              <li>
-                <Link to={"/my-models"}>My Models</Link>
-              </li>
-
-              <li>
-                <Link to={"/my-downloads"}>My Downloads</Link>
-              </li>
-
-              <input
-                // onChange={(e) => handleTheme(e.target.checked)}
-                type="checkbox"
-                // defaultChecked={localStorage.getItem("theme") === "dark"}
-                className="toggle"
-              />
-
-              <li>
-                <a>
-                  {" "}
-                  <FaGear /> Settings
-                </a>
-              </li>
-              <li>
-                <button
-                  // onClick={signOutUser}
-                  className="btn btn-xs text-left bg-linear-to-r from-pink-500 to-red-500 text-white"
-                >
-                  <IoLogOutOutline /> Logout
-                </button>
-              </li>
-            </ul>
-          </div>
-          {/* ) : ( */}
-          <Link
-            to={"/auth/login"}
-            className="btn rounded-full border-gray-300  btn-sm bg-linear-to-r from-pink-500 to-red-500 text-white"
-          >
-            {" "}
-            <IoLogIn /> Login
-          </Link>
-          {/* )} */}
+          ) : (
+            <div className="flex gap-2">
+              <Link
+                to="/auth/login"
+                className="btn rounded-full border-gray-300  btn-sm bg-gradient-to-r from-orange-400 to-orange-600 text-white"
+              >
+                <IoLogIn /> Login
+              </Link>
+              <Link
+                to="/auth/Signup"
+                className="btn rounded-full border-gray-300  btn-sm bg-gradient-to-r from-orange-400 to-orange-600 text-white"
+              >
+                Register
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

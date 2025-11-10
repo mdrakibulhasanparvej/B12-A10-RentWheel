@@ -1,10 +1,10 @@
-// src/routes/Routes.jsx
+import React from "react";
 import { createBrowserRouter } from "react-router";
 import MainLayout from "../layouts/MainLayout";
 import Home from "../pages/Home/Home";
 import AuthLayOut from "../layouts/AuthLayOut";
 import Login from "../pages/Auth/Login";
-import Register from "../pages/Auth/Register";
+import Signup from "../pages/Auth/Signup";
 import BrowseCars from "../pages/AllCar/BrowseCars";
 import DashLayout from "../layouts/DashLayout";
 import MyProfile from "../pages/MyProfile";
@@ -14,9 +14,10 @@ import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import MyListing from "../pages/MyListing";
 import OverView from "../pages/OverView";
-import Spinner from "../Components/Spinner";
+import Loading from "../Components/Loading";
 import AddNewCar from "../pages/AddNewCar";
 import NotFound from "../pages/error/NotFound";
+import PrivateRoutess from "../proviedrs/PrivateRouter";
 
 const router = createBrowserRouter([
   {
@@ -32,14 +33,20 @@ const router = createBrowserRouter([
         path: "/all-cars",
         Component: BrowseCars,
         loader: () => fetch("http://localhost:5000/cars"),
-        hydrateFallbackElement: <Spinner />,
+        hydrateFallbackElement: <Loading />,
       },
       {
         path: "/cardetails/:id",
-        Component: CarDetails,
         loader: ({ params }) =>
           fetch(`http://localhost:5000/cars/${params.id}`),
-        hydrateFallbackElement: <Spinner />,
+        hydrateFallbackElement: <Loading />,
+        element: (
+          <PrivateRoutess>
+            <React.Suspense fallback={<Loading />}>
+              <CarDetails />
+            </React.Suspense>
+          </PrivateRoutess>
+        ),
       },
       {
         path: "/aboutus",
@@ -60,8 +67,8 @@ const router = createBrowserRouter([
         element: <Login />,
       },
       {
-        path: "/auth/register",
-        element: <Register />,
+        path: "/auth/Signup",
+        element: <Signup />,
       },
     ],
   },
@@ -71,23 +78,53 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/dashboard/overview",
-        Component: OverView,
+        element: (
+          <PrivateRoutess>
+            <React.Suspense fallback={<Loading />}>
+              <OverView />
+            </React.Suspense>
+          </PrivateRoutess>
+        ),
       },
       {
         path: "/dashboard/myprofile",
-        Component: MyProfile,
+        element: (
+          <PrivateRoutess>
+            <React.Suspense fallback={<Loading />}>
+              <MyProfile />
+            </React.Suspense>
+          </PrivateRoutess>
+        ),
       },
       {
         path: "/dashboard/mybooking",
-        Component: MyBooking,
+        element: (
+          <PrivateRoutess>
+            <React.Suspense fallback={<Loading />}>
+              <MyBooking />
+            </React.Suspense>
+          </PrivateRoutess>
+        ),
       },
       {
         path: "/dashboard/mylistings",
-        Component: MyListing,
+        element: (
+          <PrivateRoutess>
+            <React.Suspense fallback={<Loading />}>
+              <MyListing />
+            </React.Suspense>
+          </PrivateRoutess>
+        ),
       },
       {
         path: "/dashboard/add_car",
-        Component: AddNewCar,
+        element: (
+          <PrivateRoutess>
+            <React.Suspense fallback={<Loading />}>
+              <AddNewCar />
+            </React.Suspense>
+          </PrivateRoutess>
+        ),
       },
     ],
   },
