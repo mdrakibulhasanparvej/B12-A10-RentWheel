@@ -1,92 +1,97 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import Loading from "../Components/Loading";
+import { AuthContext } from "../proviedrs/AuthProvider";
+import CarNotFound from "./error/CarNotFound";
 
 const MyListing = () => {
+  const { user } = useContext(AuthContext);
+  const email = user?.email;
   const [bookings, setBookings] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+  console.log(bookings, email);
 
-  // Simulated data — replace this with your API later
   useEffect(() => {
-    const demoBookings = [
-      {
-        _id: "1",
-        car_name: "BMW M4 Competition",
-        car_image:
-          "https://images.unsplash.com/photo-1617814076548-8a5b05c06513?auto=format&fit=crop&w=900&q=60",
-        booked_date: "2025-11-08",
-        price: 42000,
-        status: "Confirmed",
-      },
-      {
-        _id: "2",
-        car_name: "Mercedes G63 AMG",
-        car_image:
-          "https://images.unsplash.com/photo-1606813902917-72e098b8fdee?auto=format&fit=crop&w=900&q=60",
-        booked_date: "2025-11-04",
-        price: 53000,
-        status: "Pending",
-      },
-      {
-        _id: "3",
-        car_name: "Lamborghini Huracán",
-        car_image:
-          "https://images.unsplash.com/photo-1606813902924-96a8e7d4a0b3?auto=format&fit=crop&w=900&q=60",
-        booked_date: "2025-10-27",
-        price: 95000,
-        status: "Completed",
-      },
-    ];
-    setBookings(demoBookings);
-  }, []);
+    if (!email) return;
+
+    const fetchBookings = async () => {
+      try {
+        setLoading(true);
+        const res = await fetch(`http://localhost:5000/cars?email=${email}`);
+
+        if (!res.ok) throw new Error("User not found");
+
+        const data = await res.json();
+        setBookings(Array.isArray(data) ? data : [data]);
+      } catch (err) {
+        console.error(err);
+        setError("Failed to load data");
+        setBookings([]);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchBookings();
+  }, [email]);
+
+  if (loading) return <Loading />;
+  if (error) return <CarNotFound error={error} />;
 
   return (
-    <div className="">
-      {/* Title */}
+    <div>
       <div className="mb-6">
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
           My Wish List
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-sm">
-          All Wishlisted cars in one place.
+          All wishlisted cars in one place.
         </p>
       </div>
 
-      {/* Booking List */}
       {bookings.length === 0 ? (
         <div className="flex justify-center items-center h-64">
           <p className="text-gray-500 dark:text-gray-400">
-            You haven’t Wishlisted any cars yet!
+            You haven't wishlisted any cars yet!
           </p>
         </div>
       ) : (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {bookings.map((booking, index) => (
             <motion.div
-              key={booking._id}
+              key={booking._id || index}
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
               className="border border-gray-200 dark:border-gray-800 rounded-2xl overflow-hidden shadow hover:shadow-lg transition duration-300 bg-white dark:bg-gray-900"
             >
               <img
-                src={booking.car_image}
-                alt={booking.car_name}
+                src={booking.image_url}
+                alt={booking.name}
                 className="w-full h-48 object-cover"
               />
               <div className="p-4 space-y-2">
                 <h3 className="text-lg font-semibold text-gray-800 dark:text-white">
-                  {booking.car_name}
+                  {booking.name}
                 </h3>
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
-                  📅 Date: {booking.booked_date}
+                  Booking Status : {booking.booking_status}
                 </p>
                 <p className="text-gray-600 dark:text-gray-400 text-sm">
-                  💰 Price: ${booking.price.toLocaleString()}
+                  Daily Price: ${booking.daily?.toLocaleString()}
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  Weekly Price: ${booking.daily?.toLocaleString()}
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">
+                  Monthly Price: ${booking.monthly?.toLocaleString()}
                 </p>
                 <span
                   className={`inline-block px-3 py-1 text-xs font-medium rounded-full ${
-                    booking.status === "Confirmed"
+                    booking.booking_status === "Confirmed"
                       ? "bg-green-100 text-green-600"
-                      : booking.status === "Pending"
+                      : booking.booking_status === "Pending"
                       ? "bg-yellow-100 text-yellow-600"
                       : "bg-blue-100 text-blue-600"
                   }`}

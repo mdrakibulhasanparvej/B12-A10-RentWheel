@@ -44,9 +44,9 @@ const Navbar = () => {
       <li>
         <MyLinks to="/contactus">Contact Us</MyLinks>
       </li> */}
-      {/* <li>
+      <li>
         <MyLinks to="/dashboard/myprofile">My Profile</MyLinks>
-      </li> */}
+      </li>
       <li>
         <MyLinks to="/dashboard/mybooking">My Booking</MyLinks>
       </li>

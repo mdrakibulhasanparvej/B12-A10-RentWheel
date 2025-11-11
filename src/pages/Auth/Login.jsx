@@ -102,7 +102,7 @@ const Login = () => {
           Login to Your Account
         </h2>
 
-        <form onSubmit={handleLogin} className="space-y-4">
+        <form onSubmit={handleLogin} className="space-y-4 mb-5">
           <div>
             <label className="block text-gray-700 font-medium mb-1">
               Email
@@ -179,13 +179,13 @@ const Login = () => {
           >
             Login
           </button>
-          <button
-            onClick={handlegooglelogin}
-            className="w-full flex items-center justify-center gap-3 bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
-          >
-            <FaGoogle /> Continue with google
-          </button>
         </form>
+        <button
+          onClick={handlegooglelogin}
+          className="w-full flex items-center justify-center gap-3 bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
+        >
+          <FaGoogle /> Continue with google
+        </button>
 
         <p className="text-center text-gray-600 mt-4 text-sm">
           Don't have an account?{" "}

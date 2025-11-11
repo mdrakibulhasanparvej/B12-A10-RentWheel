@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
+import { AuthContext } from "../proviedrs/AuthProvider";
 
 const AddNewCar = () => {
+  const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
+
+  console.log(user.email);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -35,11 +39,13 @@ const AddNewCar = () => {
       brand: form.brand.value,
       model: form.model.value,
       rating: parseFloat(form.rating.value),
-      created_at: new Date().toLocaleDateString("en-GB"),
-      created_by: "mdrakibulhasanparvej@gmail.com",
+      created_at: new Date(),
+      created_by: user.email,
       downloaded: 0,
       note: "Prices are Inclusive of Vat & Deposit Fee",
     };
+
+    console.log(carData);
 
     try {
       const res = await fetch("http://localhost:5000/cars", {
@@ -50,7 +56,7 @@ const AddNewCar = () => {
 
       if (res.ok) {
         toast.success("✅ New car added successfully!");
-        form.reset();
+        // form.reset();
       } else {
         toast.error("❌ Failed to add car");
       }

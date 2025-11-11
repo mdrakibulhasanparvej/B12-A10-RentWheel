@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { NavLink, useNavigate } from "react-router";
+import { NavLink } from "react-router";
 
 const CarCard = ({ car }) => {
   const { _id, name, daily, car_type, created_by, image_url } = car;

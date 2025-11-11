@@ -31,9 +31,13 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-cars",
-        Component: BrowseCars,
         loader: () => fetch("http://localhost:5000/cars"),
         hydrateFallbackElement: <Loading />,
+        element: (
+          <React.Suspense fallback={<Loading />}>
+            <BrowseCars />
+          </React.Suspense>
+        ),
       },
       {
         path: "/cardetails/:id",

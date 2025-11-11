@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
-import useTitle from "../../hook/useTitle";
+import useTitle from "../../hooks/useTitle";
+import { Link } from "react-router";
 
-const CarNotFound = ({ handleGoBack }) => {
+const CarNotFound = ({ error }) => {
   useTitle("Toy-Not-Found");
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -12,28 +13,28 @@ const CarNotFound = ({ handleGoBack }) => {
       {/* Illustration */}
       <img
         src="/App-Error.png"
-        alt="Toy Not Found Illustration"
+        alt="Cars Not Found Illustration"
         className="w-[250px] mb-6 animate-pulse"
       />
 
       {/* Title */}
       <h2 className="text-2xl md:text-3xl font-bold text-red-500 mb-2">
-        OOPS!! TOY NOT FOUND
+        OOPS!! NO CAR ADDED
       </h2>
 
       {/* Description */}
       <p className="text-gray-600 mb-6 max-w-md leading-relaxed">
-        Sorry! The toy you're looking for doesn't exist or has been removed from
-        our system. Please try browsing other toys.
+        {error} Sorry! The car you're looking for doesn't exist or has been
+        removed from our system. Please try adding other car.
       </p>
 
       {/* Button */}
-      <button
-        onClick={handleGoBack}
-        className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-2 rounded-full shadow-md transition duration-200"
+      <Link
+        to="/all-cars"
+        className="bg-purple-600 cursor-pointer hover:bg-purple-700 text-white px-8 py-2 rounded-full shadow-md transition duration-200"
       >
-        Go Back
-      </button>
+        Broswe for car
+      </Link>
     </div>
   );
 };
