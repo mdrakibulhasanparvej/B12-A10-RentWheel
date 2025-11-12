@@ -6,8 +6,6 @@ const AddNewCar = () => {
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 
-  console.log(user.email);
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
@@ -16,36 +14,16 @@ const AddNewCar = () => {
 
     const carData = {
       name: form.name.value,
-      image_url: form.image_url.value,
-      deposit: form.deposit.value,
-      mileage_limit: form.mileage_limit.value,
-      extra_mileage: form.extra_mileage.value,
-      payment: form.payment.value,
-      color: form.color.value,
-      transmission: form.transmission.value,
-      car_type: form.car_type.value,
-      engine: form.engine.value,
-      seats: parseInt(form.seats.value),
-      doors: parseInt(form.doors.value),
-      zero_to_hundred: form.zero_to_hundred.value,
-      drive: form.drive.value,
-      fuel: form.fuel.value,
-      luggage: form.luggage.value,
-      daily: form.daily.value,
-      weekly: form.weekly.value,
-      monthly: form.monthly.value,
-      booking_status: form.booking_status.value,
+      description: form.description.value,
       category: form.category.value,
-      brand: form.brand.value,
-      model: form.model.value,
-      rating: parseFloat(form.rating.value),
+      rent_per_day: parseFloat(form.rent_per_day.value),
+      location: form.location.value,
+      image_url: form.image_url.value,
+      provider_name: user.displayName || "Unknown",
+      provider_email: user.email,
+      status: "available", // default when adding new car
       created_at: new Date(),
-      created_by: user.email,
-      downloaded: 0,
-      note: "Prices are Inclusive of Vat & Deposit Fee",
     };
-
-    console.log(carData);
 
     try {
       const res = await fetch("http://localhost:5000/cars", {
@@ -56,7 +34,7 @@ const AddNewCar = () => {
 
       if (res.ok) {
         toast.success("✅ New car added successfully!");
-        // form.reset();
+        form.reset();
       } else {
         toast.error("❌ Failed to add car");
       }
@@ -68,180 +46,103 @@ const AddNewCar = () => {
   };
 
   return (
-    <div>
-      <div className="mb-6">
-        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-          Add New Car
-        </h2>
-        <p className="text-gray-500 dark:text-gray-400 text-sm">
-          Add new car for our company.
+    <div className="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+      <div className="mb-6 text-center">
+        <h2 className="text-2xl font-semibold text-gray-800">Add New Car</h2>
+        <p className="text-gray-500 text-sm">
+          Fill out the form below to list a new car for rent.
         </p>
       </div>
 
-      <div className=" mx-auto p-6 bg-white shadow-lg rounded-lg mt-10">
-        <form
-          onSubmit={handleSubmit}
-          className="grid grid-cols-1 md:grid-cols-2 gap-4"
-        >
-          <input
-            type="text"
-            name="name"
-            placeholder="Car Name"
-            className="input input-bordered w-full"
-            required
-          />
-          <input
-            type="text"
-            name="image_url"
-            placeholder="Image URL"
-            className="input input-bordered w-full"
-            required
-          />
-          <input
-            type="text"
-            name="deposit"
-            placeholder="Deposit"
-            className="input input-bordered w-full"
-            required
-          />
-          <input
-            type="text"
-            name="mileage_limit"
-            placeholder="Mileage Limit"
-            className="input input-bordered w-full"
-            required
-          />
-          <input
-            type="text"
-            name="extra_mileage"
-            placeholder="Extra Mileage"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="payment"
-            placeholder="Payment Options"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="color"
-            placeholder="Color"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="transmission"
-            placeholder="Transmission"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="car_type"
-            placeholder="Car Type"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="engine"
-            placeholder="Engine"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="number"
-            name="seats"
-            placeholder="Seats"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="number"
-            name="doors"
-            placeholder="Doors"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="zero_to_hundred"
-            placeholder="0-100 Time"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="drive"
-            placeholder="Drive"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="fuel"
-            placeholder="Fuel"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="luggage"
-            placeholder="Luggage"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="number"
-            name="daily"
-            placeholder="Daily Price"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="weekly"
-            placeholder="Weekly Price"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="monthly"
-            placeholder="Monthly Price"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="booking_status"
-            placeholder="Booking Status"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="category"
-            placeholder="Category (sport/suv/etc)"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="brand"
-            placeholder="Brand"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="text"
-            name="model"
-            placeholder="Model"
-            className="input input-bordered w-full"
-          />
-          <input
-            type="number"
-            name="rating"
-            placeholder="Rating"
-            className="input input-bordered w-full"
-            step="0.1"
-          />
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 md:grid-cols-2 gap-4"
+      >
+        {/* Car Name */}
+        <input
+          type="text"
+          name="name"
+          placeholder="Car Name"
+          className="input input-bordered w-full"
+          required
+        />
 
-          <button
-            type="submit"
-            disabled={loading}
-            className="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded mt-4"
-          >
-            {loading ? "Adding..." : "Add Car"}
-          </button>
-        </form>
-      </div>
+        {/* Rent Price */}
+        <input
+          type="number"
+          name="rent_per_day"
+          placeholder="Rent Price (Per Day)"
+          className="input input-bordered w-full"
+          required
+        />
+
+        {/* Location */}
+        <input
+          type="text"
+          name="location"
+          placeholder="Location"
+          className="input input-bordered w-full"
+          required
+        />
+
+        {/* Category */}
+        <select
+          name="category"
+          className="select select-bordered w-full"
+          defaultValue=""
+          required
+        >
+          <option value="" disabled>
+            Select Category
+          </option>
+          <option value="Sedan">Sedan</option>
+          <option value="SUV">SUV</option>
+          <option value="Hatchback">Hatchback</option>
+          <option value="Luxury">Luxury</option>
+          <option value="Electric">Electric</option>
+        </select>
+
+        {/* Image URL */}
+        <input
+          type="text"
+          name="image_url"
+          placeholder="Hosted Image URL"
+          className="input input-bordered w-full md:col-span-2"
+          required
+        />
+
+        {/* Description */}
+        <textarea
+          name="description"
+          placeholder="Car Description"
+          rows="4"
+          className="textarea textarea-bordered w-full md:col-span-2"
+          required
+        ></textarea>
+
+        {/* Provider Info (Read Only) */}
+        <input
+          type="text"
+          value={user?.displayName || "Anonymous Provider"}
+          className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+          readOnly
+        />
+        <input
+          type="email"
+          value={user?.email || ""}
+          className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+          readOnly
+        />
+
+        {/* Submit Button */}
+        <button
+          type="submit"
+          disabled={loading}
+          className="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded mt-4 transition duration-200"
+        >
+          {loading ? "Adding..." : "Add Car"}
+        </button>
+      </form>
     </div>
   );
 };

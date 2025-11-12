@@ -3,7 +3,7 @@ import useTitle from "../../hooks/useTitle";
 import { Link } from "react-router";
 
 const CarNotFound = ({ error }) => {
-  useTitle("Toy-Not-Found");
+  useTitle("Car-Not-Found");
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
