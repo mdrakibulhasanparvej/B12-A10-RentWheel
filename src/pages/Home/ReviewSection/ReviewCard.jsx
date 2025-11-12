@@ -8,7 +8,6 @@ const ReviewCard = ({ name, rating, review, image }) => {
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
-      whileHover={{ scale: 1.05 }}
     >
       <div className="flex items-center mb-3">
         <img src={image} alt={name} className="w-10 h-10 rounded-full mr-2" />

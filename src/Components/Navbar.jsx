@@ -52,26 +52,31 @@ const Navbar = () => {
           All Cars
         </MyLinks>
       </li>
-      <li>
-        <MyLinks to="/dashboard/mybooking">
-          {" "}
-          <IoBookmarks />
-          My Bookings
-        </MyLinks>
-      </li>
-      <li>
-        <MyLinks to="/dashboard/mylistings">
-          {" "}
-          <FaListAlt />
-          My Listings
-        </MyLinks>
-      </li>
-      <li>
-        <MyLinks to="/dashboard/add_car">
-          <IoAddCircle />
-          Add A Car
-        </MyLinks>
-      </li>
+
+      {user && (
+        <div className="flex">
+          <li>
+            <MyLinks to="/dashboard/mybooking">
+              {" "}
+              <IoBookmarks />
+              My Bookings
+            </MyLinks>
+          </li>
+          <li>
+            <MyLinks to="/dashboard/mylistings">
+              {" "}
+              <FaListAlt />
+              My Listings
+            </MyLinks>
+          </li>
+          <li>
+            <MyLinks to="/dashboard/add_car">
+              <IoAddCircle />
+              Add A Car
+            </MyLinks>
+          </li>
+        </div>
+      )}
     </>
   );
   const links2 = (
@@ -203,7 +208,14 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link to="/" className="text-2xl  font-extrabold">
+          <Link to="/" className="text-2xl flex items-center font-extrabold">
+            <span>
+              <img
+                src="/logo.png"
+                className="w-6 h-6 mr-2"
+                alt="rent_wheels_logo"
+              />
+            </span>
             RENT<span className="text-orange-500">WHEELS</span>
           </Link>
         </div>
@@ -226,7 +238,7 @@ const Navbar = () => {
                     referrerPolicy="no-referrer"
                     src={
                       user.photoURL ||
-                      "https://img.daisyui.com/images/stock/photo-1534528741775-53994a69daeb.webp"
+                      "https://threedio-prod-var-cdn.icons8.com/vb/preview_sets/previews/JpZQHPMv0qeSmJHp.webp"
                     }
                   />
                 </div>

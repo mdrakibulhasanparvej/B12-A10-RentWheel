@@ -15,6 +15,8 @@ const MyBooking = () => {
   const [selectedStatus, setSelectedStatus] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
 
+  console.log(bookings);
+
   // Fetch bookings from backend
   useEffect(() => {
     if (!email) return;

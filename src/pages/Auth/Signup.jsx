@@ -6,13 +6,29 @@ import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import { toast } from "react-toastify";
 
 const Signup = () => {
-  const { createUser, updateUser, setUser, logout } = useContext(AuthContext);
+  const { createUser, googlelogin, updateUser, setUser, logout } =
+    useContext(AuthContext);
   const [name, setName] = useState("");
   const [photourl, setPhotourl] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
+
+  const handlegooglelogin = () => {
+    googlelogin()
+      .then((result) => {
+        const user = result.user;
+        setUser(user);
+        navigate(`${location.state ? location.state : "/"}`);
+        toast.success("Log in successful!", {
+          position: "top-right",
+          autoClose: 2000,
+          theme: "colored",
+        });
+      })
+      .catch((error) => toast.error(error.message));
+  };
 
   const handleRegister = (e) => {
     e.preventDefault();
@@ -156,6 +172,12 @@ const Signup = () => {
             Register
           </button>
         </form>
+        <button
+          onClick={handlegooglelogin}
+          className="w-full flex items-center justify-center gap-3 bg-orange-500 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
+        >
+          <FaGoogle /> Continue with google
+        </button>
 
         <p className="text-center text-gray-600 mt-4 text-sm">
           Already have an account?{" "}

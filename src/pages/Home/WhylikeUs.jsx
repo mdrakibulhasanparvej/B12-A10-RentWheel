@@ -1,29 +1,38 @@
+import React from "react";
 import { motion } from "framer-motion";
+import {
+  FaTooth,
+  FaTeeth,
+  FaSmile,
+  FaBookmark,
+  FaHandshake,
+} from "react-icons/fa";
+import { MdPriceChange } from "react-icons/md";
 
 const features = [
   {
-    title: "Top-Notch Quality",
-    icon: "📍",
-    description:
-      "Diam tincidunt tincidunt erat et semper fermentum. Iu ultrices quis",
-  },
-  {
-    title: "Affordable Luxury",
-    icon: "🚗",
-    description:
-      "Gravida auctor fermentum morbi vulputate ac egestas orciEtiam convallis",
-  },
-  {
-    title: "Outstanding Service",
-    icon: "👛",
-    description:
-      "Pretium convallis id diam sed commodo vestibulum lobortis volutpat",
-  },
-  {
+    icon: <FaBookmark className="text-3xl text-blue-500" />,
     title: "Easy Booking",
-    icon: "👛",
     description:
-      "Pretium convallis id diam sed commodo vestibulum lobortis volutpat",
+      "Reserve your favorite car in just a few clicks and hit the road without any hassle.",
+  },
+  {
+    icon: <MdPriceChange className="text-3xl text-pink-500" />,
+    title: "Affordable Rates",
+    description:
+      "Get the best cars at prices that won’t break the bank, making every ride worth it.",
+  },
+  {
+    icon: <FaHandshake className="text-3xl text-red-500" />,
+    title: "Trusted Providers",
+    description:
+      "Drive with confidence knowing all our cars come from verified and reliable providers.",
+  },
+  {
+    icon: <FaSmile className="text-3xl text-green-500" />,
+    title: "24/7 Support",
+    description:
+      "Our team is always ready to help, anytime you need assistance on your journey.",
   },
 ];
 
@@ -32,62 +41,60 @@ const cardVariant = {
   visible: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.6,
-      delay: i * 0.18, // per-card delay (custom * 0.18s)
-      ease: "easeOut",
-    },
+    transition: { duration: 0.6, delay: i * 0.15, ease: "easeOut" },
   }),
 };
 
 const WhylikeUs = () => {
   return (
-    <section className="py-16 px-4 sm:px-6 lg:px-10 bg-white">
-      <motion.h2
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6 }}
-        viewport={{ once: true }}
-        className=" text-3xl md:text-4xl font-semibold mb-10 text-center"
-      >
-        Why Chose Us!
-      </motion.h2>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-        {features.map((feature, index) => (
-          <motion.div
-            key={index}
-            className="group relative bg-gray-100 rounded-xl p-6 shadow-md overflow-hidden"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.2 }}
-            custom={index}
-            variants={cardVariant}
-            whileHover={{ scale: 1.04 }}
-          >
-            {/* Gradient Overlay Fade */}
-            <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-black opacity-0 group-hover:opacity-20 pointer-events-none transition-opacity duration-300" />
-
-            {/* Icon */}
-            <div className="text-4xl mb-4">{feature.icon}</div>
-
-            {/* Title */}
-            <h3 className="text-xl font-semibold mb-2 text-gray-800">
-              {feature.title}
-            </h3>
-
-            {/* Description */}
-            <p className="text-gray-600 mb-4">{feature.description}</p>
-
-            {/* Arrow Slide */}
+    <section className="bg-gray-100 py-12 px-6 md:px-16">
+      <h2 className="text-3xl font-bold text-center mb-8">Why Rent With Us!</h2>
+      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-10">
+        {/* Left Features */}
+        <div className="flex-1 flex gap-6 w-full">
+          {features.map((item, index) => (
             <motion.div
-              className="text-blue-500 font-medium flex items-center gap-1"
-              whileHover={{ x: 6 }}
-              transition={{ type: "spring", stiffness: 300 }}
+              key={index}
+              className="group relative flex flex-col justify-center items-center gap-4 p-5 rounded-xl shadow-md bg-white overflow-hidden"
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, amount: 0.3 }}
+              custom={index}
+              variants={cardVariant}
+              whileHover={{ scale: 1.03 }}
             >
-              Learn More →
+              {/* Icon with Circle */}
+              <div className="p-3 bg-gray-100 rounded-lg flex items-center justify-center shadow-sm">
+                {item.icon}
+              </div>
+
+              {/* Title & Description */}
+              <div className="text-center">
+                <h3 className="text-lg font-semibold text-gray-900 mb-1">
+                  {item.title}
+                </h3>
+                <p className="text-gray-600 text-sm leading-relaxed">
+                  {item.description}
+                </p>
+              </div>
+
+              {/* Gradient Overlay on Hover */}
+              <div className="absolute inset-0 rounded-xl bg-gradient-to-br from-transparent to-black opacity-0 group-hover:opacity-10 pointer-events-none transition-opacity duration-300" />
             </motion.div>
-          </motion.div>
-        ))}
+          ))}
+        </div>
+        {/* Right Image
+        <div className="flex-1 flex justify-center">
+          <motion.img
+            src="https://cdn.pixabay.com/photo/2017/08/06/10/42/dentist-2591634_1280.jpg"
+            alt="Dentist"
+            className="rounded-3xl w-full md:w-[500px] object-cover shadow-md"
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8 }}
+            viewport={{ once: true }}
+          />
+        </div> */}
       </div>
     </section>
   );

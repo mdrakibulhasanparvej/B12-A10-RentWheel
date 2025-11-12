@@ -10,7 +10,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-white text-gray-800 py-10 border-t border-gray-200 ">
+    <footer className="bg-white text-gray-800 py-5 border-t border-gray-200 ">
       <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8">
         {/* Logo & Description */}
         <div>
@@ -18,9 +18,12 @@ const Footer = () => {
             <img src="/logo.png" alt="RENT WHEEL" className="w-6 h-6 mr-2" />
             <h2 className="text-lg font-semibold">RENT WHEEL</h2>
           </div>
-          <p className="text-sm text-gray-600 mb-4">
-            Faucibus faucibus pellentesque dictum turpis. Id pellentesque turpis
-            massa a id iaculis lorem.
+          <p className="text-sm text-gray-600 mb-4 text-justify">
+            RentWheels is a Car Rent Online platform that connects users with
+            local car owners or rental providers. Users can browse available
+            cars, view details, and book rentals for specific dates. Car
+            providers can list vehicles, manage bookings, and update
+            availability
           </p>
           <div className="flex space-x-4 text-gray-600 text-lg">
             <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
@@ -31,11 +34,21 @@ const Footer = () => {
         </div>
 
         {/* Address */}
-        <div>
+        <div className="space-y-3">
           <h3 className="font-semibold mb-3">Address</h3>
           <div className="flex items-start space-x-3">
             <FaMapMarkerAlt className="text-orange-500 mt-1" />
-            <p className="text-sm">A-79, Savar , Dhaka-1340 </p>
+            <p className="text-sm">Upazila: Savar, District: Dhaka. </p>
+          </div>
+          <div className="flex items-start space-x-3">
+            <FaMapMarkerAlt className="text-orange-500 mt-1" />
+            <p className="text-sm">Upazila: Puthia, District: Rajshahi. </p>
+          </div>
+          <div className="flex items-start space-x-3">
+            <FaMapMarkerAlt className="text-orange-500 mt-1" />
+            <p className="text-sm">
+              Upazila: Hathazari, District: Chittagong.{" "}
+            </p>
           </div>
         </div>
 
@@ -56,11 +69,24 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold mb-3">Useful links</h3>
           <ul className="space-y-1 text-sm text-gray-600">
-            <li className="hover:text-orange-500 cursor-pointer">About us</li>
-            <li className="hover:text-orange-500 cursor-pointer">Contact us</li>
-            <li className="hover:text-orange-500 cursor-pointer">Gallery</li>
-            <li className="hover:text-orange-500 cursor-pointer">Blog</li>
-            <li className="hover:text-orange-500 cursor-pointer">F.A.Q</li>
+            <li className="hover:text-orange-500 cursor-pointer">
+              Terms & Conditions
+            </li>
+            <li className="hover:text-orange-500 cursor-pointer">
+              Our Privacy Policy
+            </li>
+            <li className="hover:text-orange-500 cursor-pointer">
+              Our license
+            </li>
+            <li className="hover:text-orange-500 cursor-pointer">
+              Rental Prices
+            </li>
+            <li className="hover:text-orange-500 cursor-pointer">
+              Rental policy
+            </li>
+            <li className="hover:text-orange-500 cursor-pointer">
+              Refundable policy
+            </li>
           </ul>
         </div>
 

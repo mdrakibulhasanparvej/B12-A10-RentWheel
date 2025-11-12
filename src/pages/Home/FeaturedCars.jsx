@@ -1,82 +1,55 @@
-import { FaArrowRight } from "react-icons/fa";
+import React, { useEffect, useState } from "react";
+import Loading from "../../Components/Loading";
 import { motion } from "framer-motion";
+import CarCard from "../../pages/AllCar/CarCard";
 
 const FeaturedCars = () => {
-  const cars = [
-    {
-      id: 1,
-      name: "SPORTS",
-      image:
-        "https://cdn.mkrentacar.com/wp-content/uploads/2025/09/SPORTS-2048x808.webp",
-    },
-    {
-      id: 2,
-      name: "SUV",
-      image:
-        "https://cdn.mkrentacar.com/wp-content/uploads/2025/09/780df4a1-164a-4d3d-aade-f3ad700f2456.webp",
-    },
-    {
-      id: 3,
-      name: "LUXURY",
-      image:
-        "https://cdn.mkrentacar.com/wp-content/uploads/2025/09/Luxury-2048x808.webp",
-    },
-    {
-      id: 4,
-      name: "EXOTIC",
-      image:
-        "https://cdn.mkrentacar.com/wp-content/uploads/2025/09/Exotic-2048x808.webp",
-    },
-    {
-      id: 5,
-      name: "CONVERTIBLE",
-      image:
-        "https://cdn.mkrentacar.com/wp-content/uploads/2025/09/CONVERTIBLE-2048x808-1.webp",
-    },
-    {
-      id: 6,
-      name: "ECONOMY",
-      image:
-        "https://cdn.mkrentacar.com/wp-content/uploads/2025/09/071754a9-2f02-446b-a1ac-f45a914d1741.webp",
-    },
-  ];
+  const [cars, setCars] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetch all cars from MongoDB
+    fetch("http://localhost:5000/cars")
+      .then((res) => res.json())
+      .then((data) => {
+        const sortedCars = data.sort(
+          (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
+        );
+        setCars(sortedCars.slice(0, 6));
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching cars:", err);
+        setLoading(false);
+      });
+  }, []);
+
+  if (loading) {
+    return <Loading />;
+  }
+
+  if (cars.length === 0) {
+    return (
+      <p className="text-center text-gray-500 mt-10">
+        No featured cars available.
+      </p>
+    );
+  }
 
   return (
-    <section className=" py-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
-        {/* Title */}
-        <motion.h2
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
-          className=" text-3xl md:text-4xl font-semibold mb-10 text-center"
-        >
-          Cars Types
-        </motion.h2>
-
-        {/* Grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+    <section className="py-10 bg-gray-100">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl font-bold text-center mb-8">Latest Cars</h2>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {cars.map((car, index) => (
             <motion.div
-              key={car.id}
+              key={car._id}
               initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              viewport={{ once: true }}
-              className="relative rounded-2xl overflow-hidden group cursor-pointer"
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.5 }}
+              whileHover={{ scale: 1.05 }}
             >
-              {/* Car image */}
-              <img
-                src={car.image}
-                alt={car.name}
-                className="w-full object-cover object-center transform transition-transform duration-700 ease-out group-hover:scale-110"
-              />
-
-              {/* Overlay gradient */}
-              <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/30 to-transparent transition-opacity duration-500 group-hover:opacity-100"></div>
-
-              {/* Text with arrow */}
+              <CarCard car={car} />
             </motion.div>
           ))}
         </div>

@@ -1,30 +1,29 @@
 import { motion } from "framer-motion";
 import { FaSearch } from "react-icons/fa";
 import { Typewriter } from "react-simple-typewriter";
+import SwiperSlider from "./SwiperSlider";
 
 const HeroSection = () => {
   return (
-    <div
-      className="relative bg-cover bg-center h-[90vh] flex items-center justify-center"
-      style={{
-        backgroundImage:
-          "url('https://cdn.mkrentacar.com/wp-content/uploads/2025/09/mk-sf90-red-banner-1-1-1.jpg')",
-      }}
-    >
-      {/* Overlay */}
-      <div className="absolute inset-0 bg-black/60"></div>
+    <div className="relative h-[90vh] overflow-hidden">
+      {/* Background Slider */}
+      <div className="absolute inset-0">
+        <SwiperSlider />
+      </div>
 
-      {/* Content */}
-      <div className="relative text-center text-white px-6 max-w-2xl">
+      {/* Dark Overlay */}
+      <div className="absolute inset-0 bg-black/60 z-[1]"></div>
+
+      {/* Foreground Content */}
+      <div className="relative z-[2] flex flex-col items-center justify-center text-center text-white h-full px-6">
         <motion.h1
           className="text-4xl md:text-5xl font-semibold mb-4"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
         >
-          Luxury Car Rental in <br />{" "}
+          Luxury Car Rental in <br />
           <span className="text-orange-500 inline-block h-10">
-            {" "}
             <Typewriter
               words={["Dhaka", "Chittagong", "Rajshahi"]}
               loop={true}
@@ -78,7 +77,7 @@ const HeroSection = () => {
           </button>
         </motion.div>
 
-        {/* No Deposit Text */}
+        {/* Bottom Text */}
         <motion.p
           className="mt-10 text-orange-500 font-semibold text-lg tracking-wide"
           initial={{ opacity: 0 }}

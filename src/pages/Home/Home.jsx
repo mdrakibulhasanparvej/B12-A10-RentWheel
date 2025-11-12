@@ -1,15 +1,17 @@
 import React from "react";
-import HeroSection from "./HeroSection";
-import FeaturedCars from "./FeaturedCars";
+import CarType from "./CarType";
 import WhylikeUs from "./WhylikeUs";
-import ReviewSection from "./ReviewSection";
-import BrandCarousel from "./BrandCarousel";
+import HeroSection from "./heroSection/HeroSection";
+import BrandCarousel from "./BrandSection/BrandCarousel";
+import ReviewSection from "./ReviewSection/ReviewSection";
+import FeaturedCars from "./FeaturedCars";
 
 const Home = () => {
   return (
     <div className="min-h-screen">
       <HeroSection />
       <BrandCarousel />
+      <CarType />
       <FeaturedCars />
       <WhylikeUs />
       <ReviewSection />
