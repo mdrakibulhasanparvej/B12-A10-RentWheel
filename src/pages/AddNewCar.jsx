@@ -94,12 +94,13 @@ const AddNewCar = () => {
         >
           <option value="" disabled>
             Select Category
-          </option>
-          <option value="Sedan">Sedan</option>
-          <option value="SUV">SUV</option>
-          <option value="Hatchback">Hatchback</option>
+          </option> 
+          <option value="Sports">Sports</option>
+          <option value="Suv">Suv</option>
+          <option value="Exotic">Exotic</option>
+          <option value="Convertible">Convertible</option>
           <option value="Luxury">Luxury</option>
-          <option value="Electric">Electric</option>
+          <option value="Economy">Economy</option>
         </select>
 
         {/* Image URL */}

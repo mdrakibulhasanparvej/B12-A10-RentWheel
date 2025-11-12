@@ -1,11 +1,19 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router";
-import { PiPhoneCallFill } from "react-icons/pi";
-import { IoLogIn, IoLogoWhatsapp } from "react-icons/io5";
+import { PiCarSimpleFill, PiPhoneCallFill } from "react-icons/pi";
+import {
+  IoAddCircle,
+  IoBookmarks,
+  IoHome,
+  IoLogIn,
+  IoLogoWhatsapp,
+} from "react-icons/io5";
 import { FaGear } from "react-icons/fa6";
 import { IoLogOutOutline } from "react-icons/io5";
 import MyLinks from "./MyLinks";
-import { FaUser } from "react-icons/fa";
+import { FaListAlt, FaUser } from "react-icons/fa";
+import { MdSpaceDashboard } from "react-icons/md";
+import { CgProfile } from "react-icons/cg";
 import { AuthContext } from "../proviedrs/AuthProvider";
 import { toast } from "react-toastify";
 
@@ -33,10 +41,82 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <MyLinks to="/">Home</MyLinks>
+        <MyLinks to="/">
+          <IoHome />
+          Home
+        </MyLinks>
       </li>
       <li>
-        <MyLinks to="/all-cars">All Cars</MyLinks>
+        <MyLinks to="/all-cars">
+          <PiCarSimpleFill />
+          All Cars
+        </MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/dashboard/mybooking">
+          {" "}
+          <IoBookmarks />
+          My Bookings
+        </MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/dashboard/mylistings">
+          {" "}
+          <FaListAlt />
+          My Listings
+        </MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/dashboard/add_car">
+          <IoAddCircle />
+          Add A Car
+        </MyLinks>
+      </li>
+    </>
+  );
+  const links2 = (
+    <>
+      <li>
+        <MyLinks to="/">
+          <IoHome />
+          Home
+        </MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/all-cars">
+          <PiCarSimpleFill />
+          All Cars
+        </MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/dashboard/overview">
+          <MdSpaceDashboard />
+          Dashboard
+        </MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/dashboard/myprofile">
+          <CgProfile />
+          My Profile
+        </MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/dashboard/add_car">
+          <IoAddCircle />
+          Add A Car
+        </MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/dashboard/mybooking">
+          <IoBookmarks />
+          My Bookings
+        </MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/dashboard/mylistings">
+          <FaListAlt />
+          My Listings
+        </MyLinks>
       </li>
       {/* <li>
         <MyLinks to="/aboutus">About Us</MyLinks>
@@ -44,18 +124,6 @@ const Navbar = () => {
       <li>
         <MyLinks to="/contactus">Contact Us</MyLinks>
       </li> */}
-      <li>
-        <MyLinks to="/dashboard/myprofile">My Profile</MyLinks>
-      </li>
-      <li>
-        <MyLinks to="/dashboard/mybooking">My Booking</MyLinks>
-      </li>
-      <li>
-        <MyLinks to="/dashboard/mylistings">My List</MyLinks>
-      </li>
-      <li>
-        <MyLinks to="/dashboard/add_car">Add A Car</MyLinks>
-      </li>
     </>
   );
 
@@ -171,7 +239,7 @@ const Navbar = () => {
                   <li className="text-sm font-bold">{user.displayName}</li>
                   <li className="text-xs">{user.email}</li>
                 </div>
-                {links}
+                {links2}
 
                 <input
                   // onChange={(e) => handleTheme(e.target.checked)}
