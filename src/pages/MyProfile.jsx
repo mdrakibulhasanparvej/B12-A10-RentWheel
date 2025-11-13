@@ -7,9 +7,7 @@ const MyProfile = () => {
   useTitle("My-Profile");
 
   const { user } = useContext(AuthContext);
-  console.log(user.displayName);
-  console.log(user.email);
-  console.log(user.photoURL);
+
   return (
     <div>
       <div className="mb-6">
