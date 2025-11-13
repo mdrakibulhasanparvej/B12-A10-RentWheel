@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, NavLink } from "react-router";
 import { PiCarSimpleFill, PiPhoneCallFill } from "react-icons/pi";
 import {
@@ -19,6 +19,17 @@ import { toast } from "react-toastify";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
+  const [theme, setTheme] = useState(localStorage.getItem("theme") || "light");
+
+  useEffect(() => {
+    const html = document.querySelector("html");
+    html.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const handleTheme = (checked) => {
+    setTheme(checked ? "dark" : "light");
+  };
 
   const handleLogout = () => {
     logout()
@@ -179,7 +190,7 @@ const Navbar = () => {
 
       <div className="navbar sticky top-0 z-50 bg-base-100 pr-5 md:px-10 text-gray-600 border-b border-gray-300 shadow-md">
         <div className="navbar-start">
-          <div className="dropdown pr-2 ">
+          <div className="dropdown ">
             <div
               tabIndex={0}
               role="button"
@@ -208,11 +219,11 @@ const Navbar = () => {
               {links}
             </ul>
           </div>
-          <Link to="/" className="text-2xl flex items-center font-extrabold">
+          <Link to="/" className="md:text-2xl flex items-center font-extrabold">
             <span>
               <img
                 src="/logo.png"
-                className="w-6 h-6 mr-2"
+                className="w-4 h-4  md:w-6 md:h-6 mr-6 md:mr-2"
                 alt="rent_wheels_logo"
               />
             </span>
@@ -254,18 +265,12 @@ const Navbar = () => {
                 {links2}
 
                 <input
-                  // onChange={(e) => handleTheme(e.target.checked)}
+                  onChange={(e) => handleTheme(e.target.checked)}
                   type="checkbox"
-                  // defaultChecked={localStorage.getItem("theme") === "dark"}
+                  defaultChecked={localStorage.getItem("theme") === "dark"}
                   className="toggle"
                 />
 
-                <li>
-                  <a>
-                    {" "}
-                    <FaGear /> Settings
-                  </a>
-                </li>
                 <li>
                   <button
                     onClick={handleLogout}
@@ -280,13 +285,13 @@ const Navbar = () => {
             <div className="flex gap-2">
               <Link
                 to="/auth/login"
-                className="btn rounded-full border-gray-300  btn-sm bg-gradient-to-r from-orange-400 to-orange-600 text-white"
+                className="btn rounded-full border-gray-300 btn-xs sm:btn-sm bg-gradient-to-r from-orange-400 to-orange-600 text-white"
               >
                 <IoLogIn /> Login
               </Link>
               <Link
                 to="/auth/Signup"
-                className="btn rounded-full border-gray-300  btn-sm bg-gradient-to-r from-orange-400 to-orange-600 text-white"
+                className="btn rounded-full border-gray-300 btn-xs sm:btn-sm bg-gradient-to-r from-orange-400 to-orange-600 text-white"
               >
                 Register
               </Link>
