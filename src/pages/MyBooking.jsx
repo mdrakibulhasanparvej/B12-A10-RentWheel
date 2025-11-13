@@ -34,8 +34,7 @@ const MyBooking = () => {
         const data = await res.json();
         setBookings(Array.isArray(data) ? data : [data]);
       } catch (err) {
-        console.error(err);
-        setError("Failed to load bookings");
+        setError("Failed to load bookings",{err});
         setBookings([]);
       } finally {
         setLoading(false);

@@ -22,7 +22,7 @@ const FeaturedCars = () => {
         console.error("Error fetching cars:", err);
         setLoading(false);
       });
-  }, []);
+  }, [loading]);
 
   if (loading) {
     return <Loading />;

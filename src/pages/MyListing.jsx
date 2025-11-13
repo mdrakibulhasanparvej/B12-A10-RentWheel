@@ -50,8 +50,7 @@ const MyListing = () => {
         const data = await res.json();
         setBookings(Array.isArray(data) ? data : []);
       } catch (err) {
-        console.error(err);
-        setError("Failed to load data");
+        setError("Failed to load data",{err});
       } finally {
         setLoading(false);
       }
@@ -109,8 +108,7 @@ const MyListing = () => {
         )
       );
     } catch (err) {
-      console.error(err);
-      toast.error("Update failed");
+      toast.error("Update failed",{err});
     } finally {
       setIsUpdating(false);
     }
@@ -139,8 +137,7 @@ const MyListing = () => {
           );
           Swal.fire("Deleted!", "Your car has been deleted.", "success");
         } catch (err) {
-          console.error(err);
-          Swal.fire("Error!", "Something went wrong while deleting.", "error");
+          Swal.fire("Error!", "Something went wrong while deleting.", {err});
         }
       }
     });
