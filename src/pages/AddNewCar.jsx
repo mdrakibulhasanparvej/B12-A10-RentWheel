@@ -26,11 +26,14 @@ const AddNewCar = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/cars", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(carData),
-      });
+      const res = await fetch(
+        "https://rent-wheels-server-eosin.vercel.app/cars",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(carData),
+        }
+      );
 
       if (res.ok) {
         toast.success("✅ New car added successfully!");
@@ -94,7 +97,7 @@ const AddNewCar = () => {
         >
           <option value="" disabled>
             Select Category
-          </option> 
+          </option>
           <option value="Sports">Sports</option>
           <option value="Suv">Suv</option>
           <option value="Exotic">Exotic</option>

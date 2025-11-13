@@ -43,7 +43,7 @@ const CarType = () => {
 
   return (
     <section className="bg-gray-100 py-16 overflow-hidden">
-      <div className="max-w-7xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-5 md:px-10">
         {/* Title */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

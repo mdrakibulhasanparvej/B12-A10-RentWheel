@@ -42,7 +42,9 @@ const MyListing = () => {
     const fetchBookings = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`http://localhost:5000/myCars?email=${email}`);
+        const res = await fetch(
+          `https://rent-wheels-server-eosin.vercel.app/myCars?email=${email}`
+        );
         if (!res.ok) throw new Error("Failed to load listings");
         const data = await res.json();
         setBookings(Array.isArray(data) ? data : []);
@@ -88,11 +90,14 @@ const MyListing = () => {
     };
 
     try {
-      const res = await fetch(`http://localhost:5000/cars/${selectedCar._id}`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(updatedCar),
-      });
+      const res = await fetch(
+        `https://rent-wheels-server-eosin.vercel.app/cars/${selectedCar._id}`,
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(updatedCar),
+        }
+      );
       if (!res.ok) throw new Error("Failed to update car");
 
       toast.success("Car updated successfully!");
@@ -127,9 +132,12 @@ const MyListing = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          const res = await fetch(`http://localhost:5000/cars/${id}`, {
-            method: "DELETE",
-          });
+          const res = await fetch(
+            `https://rent-wheels-server-eosin.vercel.app/cars/${id}`,
+            {
+              method: "DELETE",
+            }
+          );
           if (!res.ok) throw new Error("Failed to delete car");
           setBookings((prev) =>
             prev.filter((car) => car._id.toString() !== id.toString())

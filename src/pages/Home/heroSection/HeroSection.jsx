@@ -12,10 +12,10 @@ const HeroSection = () => {
       </div>
 
       {/* Dark Overlay */}
-      <div className="absolute inset-0 bg-black/60 z-[1]"></div>
+      <div className="absolute inset-0 bg-black/60 z-1"></div>
 
       {/* Foreground Content */}
-      <div className="relative z-[2] flex flex-col items-center justify-center text-center text-white h-full px-6">
+      <div className="relative z-2 flex flex-col items-center justify-center text-center text-white h-full px-6">
         <motion.h1
           className="text-4xl md:text-5xl font-semibold mb-4"
           initial={{ opacity: 0, y: -30 }}

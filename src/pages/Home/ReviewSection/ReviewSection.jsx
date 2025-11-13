@@ -1,5 +1,7 @@
 import React from "react";
 import ReviewCard from "./ReviewCard";
+import { Typewriter } from "react-simple-typewriter";
+import Marquee from "react-fast-marquee";
 
 const ReviewSection = () => {
   const reviews = [
@@ -34,19 +36,27 @@ const ReviewSection = () => {
     {
       name: "Sara Ben",
       rating: "5 months ago",
-      review: "Fantastic service! Quick pickup and amazing car condition.",
+      review:
+        "Fantastic service! Quick pickup and amazing car condition.Will rent again next time I’m in Dubai.",
       image: "https://cdn-icons-png.flaticon.com/128/6997/6997662.png",
     },
   ];
 
   return (
-    <div className="bg-gray-100 dark:bg-gray-900 px-10 py-12">
-      <div className="text-center mb-8">
+    <div className="bg-gray-100 dark:bg-gray-900 px-5 md:px-10 pb-20 py-12">
+      <div className="text-center">
         <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-          RENTWHEELS Luxury Car Rental
+          RENTWHEELS <br /> <span className="">Luxury Car Rental In</span>
         </h2>
         <p className="text-orange-500 font-medium h-5 mt-1">
-          Dhaka • Chittagong • Rajshahi
+          <span className="text-orange-500 inline-block h-10">
+            <Typewriter
+              words={["Dhaka", "Chittagong", "Rajshahi"]}
+              loop={true}
+              typeSpeed={180}
+              deleteSpeed={80}
+            />
+          </span>
         </p>
         <div className="flex items-center justify-center mt-2 gap-2">
           <span className="text-orange-500 text-lg font-semibold">
@@ -62,11 +72,18 @@ const ReviewSection = () => {
       </div>
 
       {/* MARQUEE EFFECT */}
-      <div className="overflow-hidden relative">
-        <div className="flex animate-marquee gap-6">
-          {reviews.concat(reviews).map((review, i) => (
-            <ReviewCard key={i} {...review} />
-          ))}
+      <div className="overflow-hidden relative py-10">
+        <div className="flex gap-6">
+          <Marquee
+            direction="right"
+            className="flex gap-5"
+            pauseOnHover={true}
+            speed={60}
+          >
+            {reviews.concat(reviews).map((review, i) => (
+              <ReviewCard key={i} {...review} />
+            ))}
+          </Marquee>
         </div>
       </div>
     </div>

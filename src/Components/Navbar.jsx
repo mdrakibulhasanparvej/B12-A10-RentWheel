@@ -54,7 +54,7 @@ const Navbar = () => {
       </li>
 
       {user && (
-        <div className="flex">
+        <div className="flex flex-col md:flex-row">
           <li>
             <MyLinks to="/dashboard/mybooking">
               {" "}
@@ -133,8 +133,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="relative">
-      <div className="py-1 flex justify-between items-center px-5 md:px-10">
+    <div className="relative ">
+      <div className="py-1 flex justify-end  items-center px-5 md:px-10">
         <div className="right-side ">
           <h2 className="flex items-center gap-2 text-xs md:text-sm lg:text-base">
             <span>

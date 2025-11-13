@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import BrandCard from "./BrandCard";
-import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
+import Marquee from "react-fast-marquee";
 
 const BrandCarousel = () => {
   const brands = [
@@ -59,25 +59,6 @@ const BrandCarousel = () => {
 
   const containerRef = useRef();
 
-  // Scroll manually by card width
-  const scrollLeft = () => {
-    if (containerRef.current) {
-      containerRef.current.scrollBy({
-        left: -containerRef.current.offsetWidth / 4,
-        behavior: "smooth",
-      });
-    }
-  };
-
-  const scrollRight = () => {
-    if (containerRef.current) {
-      containerRef.current.scrollBy({
-        left: containerRef.current.offsetWidth / 4,
-        behavior: "smooth",
-      });
-    }
-  };
-
   return (
     <div className="bg-gray-100 dark:bg-gray-900 py-12 px-6 md:px-10 relative overflow-hidden">
       <h2 className="text-2xl font-bold text-center text-gray-800 dark:text-white mb-6">
@@ -87,18 +68,17 @@ const BrandCarousel = () => {
       {/* Carousel Container */}
       <div className="relative overflow-hidden">
         {/* Marquee Track */}
-        <div
-          ref={containerRef}
-          className="flex gap-4 whitespace-nowrap animate-marquee hover:pause-marquee"
-        >
-          {loopBrands.map((brand, i) => (
-            <div
-              key={i}
-              className="flex-shrink-0 w-[11%] sm:w-[10%] md:w-[8%] lg:w-[8%]"
-            >
-              <BrandCard {...brand} />
-            </div>
-          ))}
+        <div ref={containerRef} className="flex gap-4 whitespace-nowrap">
+          <Marquee className="flex gap-5" pauseOnHover={true} speed={60}>
+            {loopBrands.map((brand, i) => (
+              <div
+                key={i}
+                className="shrink-0 w-[11%] sm:w-[10%] md:w-[8%] lg:w-[8%]"
+              >
+                <BrandCard {...brand} />
+              </div>
+            ))}
+          </Marquee>
         </div>
       </div>
     </div>

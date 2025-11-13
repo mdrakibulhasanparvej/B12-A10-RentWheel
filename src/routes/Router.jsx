@@ -13,7 +13,7 @@ import CarDetails from "../pages/cardetails/CarDetails";
 import AboutUs from "../pages/AboutUs";
 import ContactUs from "../pages/ContactUs";
 import MyListing from "../pages/MyListing";
-import OverView from "../pages/OverView";
+import OverView from "../pages/overview/OverView";
 import Loading from "../Components/Loading";
 import AddNewCar from "../pages/AddNewCar";
 import NotFound from "../pages/error/NotFound";
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-cars",
-        loader: () => fetch("http://localhost:5000/cars"),
+        loader: () => fetch("https://rent-wheels-server-eosin.vercel.app/cars"),
         hydrateFallbackElement: <Loading />,
         element: (
           <React.Suspense fallback={<Loading />}>
@@ -42,7 +42,9 @@ const router = createBrowserRouter([
       {
         path: "/cardetails/:id",
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/cars/${params.id}`),
+          fetch(
+            `https://rent-wheels-server-eosin.vercel.app/cars/${params.id}`
+          ),
         hydrateFallbackElement: <Loading />,
         element: (
           <PrivateRoutess>

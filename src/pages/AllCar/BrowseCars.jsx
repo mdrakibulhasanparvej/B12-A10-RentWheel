@@ -33,9 +33,9 @@ const BrowseCars = () => {
   return cars.length > 0 ? (
     <div className="p-6">
       {/* Category Filter Buttons + Search */}
-      <div className="flex flex-wrap gap-3 mb-6 items-center">
+      <div className="flex flex-col md:flex-row flex-wrap md:justify-between gap-3 mb-6 items-center">
         {/* Category Buttons */}
-        <div className="flex flex-wrap gap-3">
+        <div className="flex justify-center md:justify-start flex-wrap gap-3">
           {categories.map((category) => {
             const count =
               category === "All"
@@ -58,14 +58,16 @@ const BrowseCars = () => {
           })}
         </div>
 
-        {/* Live Search Input */}
-        <input
-          type="text"
-          placeholder="Search by car name..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
-          className="ml-auto px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
-        />
+        <div>
+          {/* Live Search Input */}
+          <input
+            type="text"
+            placeholder="Search by car name..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="ml-auto px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
+          />
+        </div>
       </div>
 
       {/* Car Cards Grid */}

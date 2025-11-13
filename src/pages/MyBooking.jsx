@@ -24,7 +24,9 @@ const MyBooking = () => {
     const fetchBookings = async () => {
       try {
         setLoading(true);
-        const res = await fetch(`http://localhost:5000/cars_booked`);
+        const res = await fetch(
+          `https://rent-wheels-server-eosin.vercel.app/cars_booked`
+        );
         if (!res.ok) throw new Error("Failed to fetch bookings");
 
         const data = await res.json();
@@ -54,7 +56,7 @@ const MyBooking = () => {
   return (
     <div>
       {/* Title */}
-      <div className="mb-6 flex justify-between">
+      <div className="mb-6 gap-5 flex flex-col md:flex-row md:justify-between">
         <div>
           <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
             My Bookings
@@ -112,8 +114,8 @@ const MyBooking = () => {
               <tr className="border-b border-gray-200 dark:border-gray-700 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
                 <th className="px-4 py-3 text-left">Car Name</th>
                 <th className="px-4 py-3 text-left">Booking Date</th>
-                <th className="px-4 py-3 text-left">Price</th>
-                <th className="px-4 py-3 text-left">Status</th>
+                <th className="px-4 py-3 text-left hidden md:block">Price</th>
+                <th className="px-4 py-3 text-left ">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -126,7 +128,7 @@ const MyBooking = () => {
                   <td className="px-4 py-3">
                     {new Date(booking.created_date).toLocaleDateString()}
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-4 py-3 hidden md:block">
                     ${booking.rent_per_day?.toLocaleString()}
                   </td>
                   <td className="px-4 py-3">

@@ -45,22 +45,28 @@ const CarDetails = () => {
       };
 
       // 2️ Insert booking
-      const bookingRes = await fetch("http://localhost:5000/bookings", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bookingData),
-      });
+      const bookingRes = await fetch(
+        "https://rent-wheels-server-eosin.vercel.app/bookings",
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(bookingData),
+        }
+      );
 
       const bookingResult = await bookingRes.json();
       console.log("Booking saved:", bookingResult);
 
       // 3️ Update car status
       const bookedStatus = { _id: car._id, status: "booked" };
-      const statusRes = await fetch("http://localhost:5000/cars_booked", {
-        method: "PATCH",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(bookedStatus),
-      });
+      const statusRes = await fetch(
+        "https://rent-wheels-server-eosin.vercel.app/cars_booked",
+        {
+          method: "PATCH",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(bookedStatus),
+        }
+      );
 
       const statusResult = await statusRes.json();
 

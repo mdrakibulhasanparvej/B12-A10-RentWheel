@@ -1,12 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import {
-  FaTooth,
-  FaTeeth,
-  FaSmile,
-  FaBookmark,
-  FaHandshake,
-} from "react-icons/fa";
+import { FaBookmark, FaHandshake } from "react-icons/fa";
+import { BiSupport } from "react-icons/bi";
 import { MdPriceChange } from "react-icons/md";
 
 const features = [
@@ -29,7 +24,7 @@ const features = [
       "Drive with confidence knowing all our cars come from verified and reliable providers.",
   },
   {
-    icon: <FaSmile className="text-3xl text-green-500" />,
+    icon: <BiSupport className="text-3xl text-green-500" />,
     title: "24/7 Support",
     description:
       "Our team is always ready to help, anytime you need assistance on your journey.",
@@ -47,11 +42,11 @@ const cardVariant = {
 
 const WhylikeUs = () => {
   return (
-    <section className="bg-gray-100 py-12 px-6 md:px-16">
+    <section className="bg-gray-100 py-12 px-5 md:px-10">
       <h2 className="text-3xl font-bold text-center mb-8">Why Rent With Us!</h2>
-      <div className="max-w-7xl mx-auto flex flex-col-reverse md:flex-row items-center gap-10">
+      <div className="max-w-7xl mx-auto flex  md:flex-row items-center gap-10">
         {/* Left Features */}
-        <div className="flex-1 flex gap-6 w-full">
+        <div className="flex flex-col md:flex-row gap-6 w-full">
           {features.map((item, index) => (
             <motion.div
               key={index}
