@@ -33,11 +33,11 @@ const BrowseCars = () => {
     .filter((car) => car.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return cars.length > 0 ? (
-    <div className="p-6">
+    <div className="p-6 bg-gray-100 dark:bg-gray-900">
       {/* Category Filter Buttons + Search */}
       <div className="flex flex-col md:flex-row flex-wrap md:justify-between gap-3 mb-6 items-center">
         {/* Category Buttons */}
-        <div className="flex justify-center md:justify-start flex-wrap gap-3">
+        <div className="flex  justify-center md:justify-start flex-wrap gap-3">
           {categories.map((category) => {
             const count =
               category === "All"
@@ -48,9 +48,9 @@ const BrowseCars = () => {
               <button
                 key={category}
                 onClick={() => setSelectedCategory(category)}
-                className={`px-4 py-2 rounded font-medium ${
+                className={`px-4 py-2 cursor-pointer rounded font-medium ${
                   selectedCategory === category
-                    ? "bg-orange-500 text-white"
+                    ? "bg-orange-500 text-white "
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                 }`}
               >
@@ -67,7 +67,7 @@ const BrowseCars = () => {
             placeholder="Search by car name..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="ml-auto px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
+            className="ml-auto px-4 py-2 border text-gray-800 dark:text-white border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
           />
         </div>
       </div>

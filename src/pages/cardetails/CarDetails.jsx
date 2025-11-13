@@ -55,6 +55,16 @@ const CarDetails = () => {
       );
 
       const bookingResult = await bookingRes.json();
+      if (bookingResult) {
+        toast.success("Booking successful! Car is now booked.", {
+          position: "top-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+        });
+      }
       // console.log("Booking saved:", bookingResult);
 
       // 3️ Update car status
@@ -108,63 +118,67 @@ const CarDetails = () => {
   };
 
   return (
-    <div className="bg-white text-gray-900 rounded-lg shadow-lg overflow-hidden max-w-5xl mx-auto mt-10 flex flex-col md:flex-row">
-      {/* Image Section */}
-      <motion.div
-        className="md:w-1/2 w-full overflow-hidden"
-        whileHover={{ scale: 1.05 }}
-      >
-        <img
-          src={image_url}
-          alt={name}
-          className="w-full h-full object-cover rounded-lg"
-        />
-      </motion.div>
+    <div className="bg-gray-100 dark:bg-gray-900 p-10">
+      <div className="bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 rounded-lg shadow-lg overflow-hidden max-w-5xl mx-auto flex flex-col md:flex-row">
+        {/* Image Section */}
+        <motion.div
+          className="md:w-1/2 p-3 w-full overflow-hidden"
+          whileHover={{ scale: 1.05 }}
+        >
+          <img
+            src={image_url}
+            alt={name}
+            className="w-full  h-full object-cover rounded-lg"
+          />
+        </motion.div>
 
-      {/* Details Section */}
-      <div className="md:w-1/2 w-full p-6 flex flex-col justify-between">
-        <div>
-          <h2 className="text-3xl font-bold mb-3">{name}</h2>
-          <p className="text-gray-700 mb-4">{description}</p>
+        {/* Details Section */}
+        <div className="md:w-1/2 w-full p-6 flex flex-col justify-between">
+          <div>
+            <h2 className="text-3xl font-bold mb-3">{name}</h2>
+            <p className="text-gray-600 dark:text-gray-400  mb-4">
+              {description}
+            </p>
 
-          <div className="grid grid-cols-2 gap-2 text-sm mb-4">
-            <div>
-              <strong>Category:</strong> {category}
+            <div className="grid grid-cols-2 gap-2 text-sm mb-4">
+              <div>
+                <strong>Category:</strong> {category}
+              </div>
+              <div>
+                <strong>Location:</strong> {location}
+              </div>
+              <div>
+                <strong>Status:</strong> {currentStatus}
+              </div>
+              <div>
+                <strong>Provider:</strong> {provider_name}
+              </div>
+              <div>
+                <strong>Email:</strong> {provider_email}
+              </div>
             </div>
-            <div>
-              <strong>Location:</strong> {location}
-            </div>
-            <div>
-              <strong>Status:</strong> {currentStatus}
-            </div>
-            <div>
-              <strong>Provider:</strong> {provider_name}
-            </div>
-            <div>
-              <strong>Email:</strong> {provider_email}
-            </div>
+
+            <p className="text-lg font-semibold mb-4">
+              Rent Price: ${rent_per_day}
+            </p>
           </div>
 
-          <p className="text-lg font-semibold mb-4">
-            Rent Price: ${rent_per_day}
-          </p>
+          <button
+            onClick={handleBooknow}
+            disabled={currentStatus === "booked" || loading}
+            className={`${
+              currentStatus === "booked" || loading
+                ? "bg-gray-400 cursor-not-allowed"
+                : "bg-yellow-600 hover:bg-yellow-700"
+            } text-white font-semibold px-5 py-2 rounded transition-all`}
+          >
+            {currentStatus === "booked"
+              ? "Booked"
+              : loading
+              ? "Booking..."
+              : "Book Now"}
+          </button>
         </div>
-
-        <button
-          onClick={handleBooknow}
-          disabled={currentStatus === "booked" || loading}
-          className={`${
-            currentStatus === "booked" || loading
-              ? "bg-gray-400 cursor-not-allowed"
-              : "bg-yellow-600 hover:bg-yellow-700"
-          } text-white font-semibold px-5 py-2 rounded transition-all`}
-        >
-          {currentStatus === "booked"
-            ? "Booked"
-            : loading
-            ? "Booking..."
-            : "Book Now"}
-        </button>
       </div>
     </div>
   );

@@ -10,8 +10,6 @@ import DashLayout from "../layouts/DashLayout";
 import MyProfile from "../pages/MyProfile";
 import MyBooking from "../pages/MyBooking";
 import CarDetails from "../pages/cardetails/CarDetails";
-import AboutUs from "../pages/AboutUs";
-import ContactUs from "../pages/ContactUs";
 import MyListing from "../pages/MyListing";
 import OverView from "../pages/overview/OverView";
 import Loading from "../Components/Loading";
@@ -53,14 +51,6 @@ const router = createBrowserRouter([
             </React.Suspense>
           </PrivateRoutess>
         ),
-      },
-      {
-        path: "/aboutus",
-        Component: AboutUs,
-      },
-      {
-        path: "/contactus",
-        Component: ContactUs,
       },
     ],
   },

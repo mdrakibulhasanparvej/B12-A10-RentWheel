@@ -42,7 +42,7 @@ const cardVariant = {
 
 const WhylikeUs = () => {
   return (
-    <section className="bg-gray-100 py-12 px-5 md:px-10">
+    <section className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white py-12 px-5 md:px-10">
       <h2 className="text-3xl  comfortaa font-extrabold  text-center mb-8">
         Why Rent With Us!
       </h2>
@@ -52,7 +52,7 @@ const WhylikeUs = () => {
           {features.map((item, index) => (
             <motion.div
               key={index}
-              className="group relative flex flex-col justify-center items-center gap-4 p-5 rounded-xl shadow-md bg-white overflow-hidden"
+              className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white group relative flex flex-col justify-center items-center gap-4 p-5 rounded-xl shadow-md overflow-hidden"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -67,10 +67,8 @@ const WhylikeUs = () => {
 
               {/* Title & Description */}
               <div className="text-center">
-                <h3 className="text-lg font-semibold text-gray-900 mb-1">
-                  {item.title}
-                </h3>
-                <p className="text-gray-600 text-sm leading-relaxed">
+                <h3 className="text-lg font-semibold  mb-1">{item.title}</h3>
+                <p className=" dark:text-gray-400 text-sm leading-relaxed">
                   {item.description}
                 </p>
               </div>

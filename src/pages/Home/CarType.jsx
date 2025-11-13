@@ -42,7 +42,7 @@ const CarType = () => {
   ];
 
   return (
-    <section className="bg-gray-100 py-16 overflow-hidden">
+    <section className="bg-gray-100 dark:bg-gray-900 py-16 overflow-hidden">
       <div className="max-w-7xl mx-auto px-5 md:px-10">
         {/* Title */}
         <motion.h2
@@ -50,7 +50,7 @@ const CarType = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className=" text-3xl md:text-4xl  comfortaa font-extrabold  mb-10 text-center"
+          className=" text-3xl md:text-4xl text-gray-800 dark:text-white comfortaa font-extrabold  mb-10 text-center"
         >
           Cars Types
         </motion.h2>

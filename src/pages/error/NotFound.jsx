@@ -33,7 +33,7 @@ const NotFound = () => {
           to="/"
           className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
         >
-          <span>🏠</span> Back to Home
+          Back to Home
         </Link>
       </div>
 

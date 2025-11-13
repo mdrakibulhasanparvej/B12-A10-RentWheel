@@ -144,8 +144,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="relative ">
-      <div className="py-1 flex justify-end  items-center px-5 md:px-10">
+    <div className="relative dark:bg-gray-800 ">
+      <div className="py-1 flex justify-end text-gray-800 dark:text-white items-center px-5 md:px-10">
         <div className="right-side ">
           <h2 className="flex items-center gap-2 text-xs md:text-sm lg:text-base">
             <span>
@@ -188,8 +188,8 @@ const Navbar = () => {
         </div> */}
       </div>
 
-      <div className="navbar sticky top-0 z-50 bg-base-100 pr-5 md:px-10 text-gray-600 border-b border-gray-300 shadow-md">
-        <div className="navbar-start">
+      <div className="navbar bg-white dark:bg-gray-800 text-gray-800 dark:text-white sticky top-0 z-50 pr-5 md:px-10 border-b border-gray-300 shadow-md">
+        <div className="navbar-start  ">
           <div className="dropdown ">
             <div
               tabIndex={0}
@@ -214,7 +214,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex="-1"
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu bg-white dark:bg-gray-800 menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
               {links}
             </ul>
@@ -237,7 +237,7 @@ const Navbar = () => {
         {/* new user icon */}
         <div className="navbar-end gap-3">
           {user ? (
-            <div className="dropdown dropdown-end z-50">
+            <div className="dropdown dropdown-end z-50 ">
               <div
                 tabIndex={0}
                 role="button"
@@ -256,7 +256,7 @@ const Navbar = () => {
               </div>
               <ul
                 tabIndex="-1"
-                className="menu  menu-sm dropdown-content bg-base-100 rounded-box z-50 mt-3 w-60 p-2 shadow"
+                className="menu text-gray-800 dark:text-white bg-white dark:bg-gray-800 menu-sm dropdown-content rounded-box z-50 mt-3 w-60 p-2 shadow"
               >
                 <div className=" pb-3 border-b border-b-gray-200">
                   <li className="text-sm font-bold">{user.displayName}</li>
@@ -274,7 +274,7 @@ const Navbar = () => {
                 <li>
                   <button
                     onClick={handleLogout}
-                    className="btn btn-xs text-left bg-linear-to-br from-orange-500 to-yellow-400 text-white"
+                    className="btn mt-3 btn-xs text-left bg-linear-to-br from-orange-500 to-yellow-400 text-white"
                   >
                     <IoLogOutOutline /> Logout
                   </button>

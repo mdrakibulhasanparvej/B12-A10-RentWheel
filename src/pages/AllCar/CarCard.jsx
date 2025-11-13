@@ -18,7 +18,7 @@ const CarCard = ({ car }) => {
 
   return (
     <motion.div
-      className="bg-white text-gray-900 rounded-lg shadow-lg overflow-hidden p-4 flex flex-col relative"
+      className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-lg shadow-lg overflow-hidden p-4 flex flex-col relative"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
@@ -28,7 +28,7 @@ const CarCard = ({ car }) => {
       <span
         className={`absolute top-2 right-2 text-xs font-semibold text-white px-2 py-1 rounded-full ${statusColor}`}
       >
-        {status === "available" ? "Available" : "Booked"}
+        {status === "available" ? "Available" : "Unavailable"}
       </span>
 
       {/* Car Image */}
@@ -42,17 +42,17 @@ const CarCard = ({ car }) => {
 
       {/* Car Info */}
       <div className="flex flex-col gap-1">
-        <p className="text-gray-700 text-sm">
+        <p className=" text-sm">
           <span className="font-semibold">Car Name:</span> {name}
         </p>
-        <p className="text-gray-700 text-sm">
+        <p className="dark:text-gray-400  text-sm">
           <span className="font-semibold">Rent Price (per day):</span> $
           {rent_per_day}
         </p>
-        <p className="text-gray-700 text-sm">
+        <p className="dark:text-gray-400  text-sm">
           <span className="font-semibold">Car Type:</span> {category}
         </p>
-        <p className="text-gray-700 text-sm">
+        <p className="dark:text-gray-400  text-sm">
           <span className="font-semibold">Provider Name:</span> {provider_name}
         </p>
       </div>

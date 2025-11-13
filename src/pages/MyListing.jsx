@@ -156,7 +156,7 @@ const MyListing = () => {
     .filter((b) => b.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <div className="px-4 sm:px-6 md:px-8 lg:px-10">
+    <div className="px-4 sm:px-6 md:px-8 lg:px-10 text-gray-800 dark:text-white">
       {/* Header */}
       <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
         <div>
@@ -187,7 +187,7 @@ const MyListing = () => {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-3 py-1 sm:px-4 sm:py-2 rounded font-medium text-sm sm:text-base ${
+              className={`px-3 py-1 cursor-pointer sm:px-4 sm:py-2 rounded font-medium text-sm sm:text-base ${
                 selectedCategory === cat
                   ? "bg-orange-500 text-white"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -212,12 +212,8 @@ const MyListing = () => {
             <thead>
               <tr className="border-b border-gray-200 dark:border-gray-700 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
                 <th className="px-3 sm:px-4 py-2 text-left">Car Name</th>
-                <th className="px-3 sm:px-4 py-2 text-left  hidden md:block">
-                  Rent Price
-                </th>
-                <th className="px-3 sm:px-4 py-2 text-left  hidden md:block">
-                  Category
-                </th>
+                <th className="px-3 sm:px-4 py-2 text-left">Rent Price</th>
+                <th className="px-3 sm:px-4 py-2 text-left">Category</th>
                 <th className="px-3 sm:px-4 py-2 text-left">Status</th>
                 <th className="px-3 sm:px-4 py-2 text-left">Update</th>
                 <th className="px-3 sm:px-4 py-2 text-left">Delete</th>
@@ -230,12 +226,8 @@ const MyListing = () => {
                   className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   <td className="px-3 sm:px-4 py-2">{car.name}</td>
-                  <td className="px-3 sm:px-4 py-2  hidden md:block">
-                    ${car.rent_per_day}
-                  </td>
-                  <td className="px-3 sm:px-4 py-2  hidden md:block">
-                    {car.category}
-                  </td>
+                  <td className="px-3 sm:px-4 py-2">${car.rent_per_day}</td>
+                  <td className="px-3 sm:px-4 py-2">{car.category}</td>
                   <td className="px-3 sm:px-4 py-2">
                     {car.status === "booked" ? (
                       <span className="bg-red-100 text-red-600 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
@@ -272,7 +264,7 @@ const MyListing = () => {
 
       {/* Update Modal */}
       <dialog id="update_modal" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box max-w-full sm:max-w-3xl">
+        <div className="modal-box max-w-full sm:max-w-3xl text-gray-800 dark:text-white bg-white dark:bg-gray-800">
           <h2 className="text-xl sm:text-2xl font-semibold text-center mb-2 text-gray-800">
             Update Car
           </h2>
@@ -283,14 +275,14 @@ const MyListing = () => {
           {selectedCar && (
             <form
               onSubmit={handleUpdateSubmit}
-              className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-gray-800 dark:text-white"
             >
               <input
                 type="text"
                 name="name"
                 value={formData.name}
                 onChange={handleChange}
-                className="input input-bordered w-full"
+                className="input text-gray-900 dark:text-white bg-white dark:bg-gray-900 input-bordered w-full"
                 required
               />
               <input
@@ -298,7 +290,7 @@ const MyListing = () => {
                 name="rent_per_day"
                 value={formData.rent_per_day}
                 onChange={handleChange}
-                className="input input-bordered w-full"
+                className="input text-gray-800 dark:text-white bg-white dark:bg-gray-900   input-bordered w-full"
                 required
               />
               <input
@@ -306,14 +298,14 @@ const MyListing = () => {
                 name="location"
                 value={formData.location}
                 onChange={handleChange}
-                className="input input-bordered w-full"
+                className="input text-gray-800 dark:text-white bg-white dark:bg-gray-900   input-bordered w-full"
                 required
               />
               <select
                 name="category"
                 value={formData.category}
                 onChange={handleChange}
-                className="select select-bordered w-full"
+                className="select text-gray-800 dark:text-white bg-white dark:bg-gray-900  select-bordered w-full"
                 required
               >
                 <option value="sports">Sports</option>
@@ -328,7 +320,7 @@ const MyListing = () => {
                 name="image_url"
                 value={formData.image_url}
                 onChange={handleChange}
-                className="input input-bordered w-full sm:col-span-2"
+                className="input text-gray-800 dark:text-white bg-white dark:bg-gray-900  input-bordered w-full sm:col-span-2"
                 required
               />
               <textarea
@@ -336,7 +328,7 @@ const MyListing = () => {
                 value={formData.description}
                 onChange={handleChange}
                 rows="4"
-                className="textarea textarea-bordered w-full sm:col-span-2"
+                className="textarea text-gray-800 dark:text-white bg-white dark:bg-gray-900  textarea-bordered w-full sm:col-span-2"
                 required
               ></textarea>
               <button

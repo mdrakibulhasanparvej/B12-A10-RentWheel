@@ -56,7 +56,7 @@ const MyBooking = () => {
     .filter((b) => b.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <div>
+    <div className="text-gray-800 dark:text-white">
       {/* Title */}
       <div className="mb-6 gap-5 flex flex-col md:flex-row md:justify-between">
         <div>
@@ -90,7 +90,7 @@ const MyBooking = () => {
             <button
               key={status}
               onClick={() => setSelectedStatus(status)}
-              className={`px-4 py-2 rounded font-medium ${
+              className={`px-4 py-2 cursor-pointer rounded font-medium ${
                 selectedStatus === status
                   ? "bg-orange-500 text-white"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -116,7 +116,7 @@ const MyBooking = () => {
               <tr className="border-b border-gray-200 dark:border-gray-700 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
                 <th className="px-4 py-3 text-left">Car Name</th>
                 <th className="px-4 py-3 text-left">Booking Date</th>
-                <th className="px-4 py-3 text-left hidden md:block">Price</th>
+                <th className="px-4 py-3 text-left ">Price</th>
                 <th className="px-4 py-3 text-left ">Status</th>
               </tr>
             </thead>
@@ -130,7 +130,7 @@ const MyBooking = () => {
                   <td className="px-4 py-3">
                     {new Date(booking.created_date).toLocaleDateString()}
                   </td>
-                  <td className="px-4 py-3 hidden md:block">
+                  <td className="px-4 py-3 ">
                     ${booking.rent_per_day?.toLocaleString()}
                   </td>
                   <td className="px-4 py-3">
