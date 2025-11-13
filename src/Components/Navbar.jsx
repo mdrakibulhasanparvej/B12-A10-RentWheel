@@ -262,8 +262,8 @@ const Navbar = () => {
                   <li className="text-xs">{user.email}</li>
                 </div>
                 {links2}
-                <div className="px-3">
-                  <span>
+                <div className="px-3 flex gap-2 items-center">
+                  <span className="text-xl">
                     <MdLightMode />
                   </span>
                   <input
@@ -272,7 +272,7 @@ const Navbar = () => {
                     defaultChecked={localStorage.getItem("theme") === "dark"}
                     className="toggle"
                   />
-                  <span>
+                  <span className="text-xl">
                     <MdDarkMode />
                   </span>
                 </div>
