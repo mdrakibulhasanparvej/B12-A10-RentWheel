@@ -147,12 +147,12 @@ const HeroSection = () => {
                     </div>
                     <span
                       className={`text-xs font-medium px-2 py-1 rounded ${
-                        car.status
+                        car.status == "booked"
                           ? "bg-red-200 text-red-700"
                           : "bg-green-200 text-green-700"
                       }`}
                     >
-                      {car.status ? "Booked" : "Available"}
+                      {car.status == "booked" ? "Booked" : "Available"}
                     </span>
                   </li>
                 </NavLink>
