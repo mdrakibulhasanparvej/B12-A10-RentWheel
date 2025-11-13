@@ -4,6 +4,7 @@ import { AuthContext } from "../proviedrs/AuthProvider";
 import CarNotFound from "./error/CarNotFound";
 import { toast } from "react-toastify";
 import Swal from "sweetalert2";
+import useTitle from "../hooks/useTitle";
 
 const categories = [
   "All",
@@ -16,6 +17,7 @@ const categories = [
 ];
 
 const MyListing = () => {
+  useTitle("My-Listing");
   const { user } = useContext(AuthContext);
   const email = user?.email;
 
@@ -27,7 +29,6 @@ const MyListing = () => {
   const [selectedCar, setSelectedCar] = useState(null);
   const [isUpdating, setIsUpdating] = useState(false);
 
-  // Controlled form state for update
   const [formData, setFormData] = useState({
     name: "",
     rent_per_day: "",
@@ -58,7 +59,6 @@ const MyListing = () => {
     fetchBookings();
   }, [email]);
 
-  // Open modal and set selectedCar & formData
   const openUpdateModal = (car) => {
     setSelectedCar(car);
     setFormData({
@@ -72,13 +72,11 @@ const MyListing = () => {
     document.getElementById("update_modal").showModal();
   };
 
-  // Handle form input change
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  // Handle Update Submit
   const handleUpdateSubmit = async (e) => {
     e.preventDefault();
     setIsUpdating(true);
@@ -118,7 +116,6 @@ const MyListing = () => {
     }
   };
 
-  // Handle Delete
   const handleDelete = async (id) => {
     Swal.fire({
       title: "Are you sure?",
@@ -134,9 +131,7 @@ const MyListing = () => {
         try {
           const res = await fetch(
             `https://rent-wheels-server-eosin.vercel.app/cars/${id}`,
-            {
-              method: "DELETE",
-            }
+            { method: "DELETE" }
           );
           if (!res.ok) throw new Error("Failed to delete car");
           setBookings((prev) =>
@@ -161,14 +156,14 @@ const MyListing = () => {
     .filter((b) => b.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <div>
+    <div className="px-4 sm:px-6 md:px-8 lg:px-10">
       {/* Header */}
-      <div className="mb-6 flex justify-between flex-wrap">
+      <div className="mb-6 flex flex-col sm:flex-row sm:justify-between sm:items-center gap-3">
         <div>
-          <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
+          <h2 className="text-xl sm:text-2xl font-semibold text-gray-800 dark:text-white">
             My Listings
           </h2>
-          <p className="text-gray-500 dark:text-gray-400 text-sm">
+          <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base">
             Manage your listed cars below.
           </p>
         </div>
@@ -177,12 +172,12 @@ const MyListing = () => {
           placeholder="Search by car name..."
           value={searchTerm}
           onChange={(e) => setSearchTerm(e.target.value)}
-          className="ml-auto px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400"
+          className="ml-auto px-3 py-2 sm:px-4 sm:py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-orange-400 w-full sm:w-auto"
         />
       </div>
 
       {/* Categories */}
-      <div className="flex flex-wrap gap-3 mb-6 items-center">
+      <div className="flex flex-wrap gap-2 sm:gap-3 mb-6 items-center">
         {categories.map((cat) => {
           const count =
             cat === "All"
@@ -192,7 +187,7 @@ const MyListing = () => {
             <button
               key={cat}
               onClick={() => setSelectedCategory(cat)}
-              className={`px-4 py-2 rounded font-medium ${
+              className={`px-3 py-1 sm:px-4 sm:py-2 rounded font-medium text-sm sm:text-base ${
                 selectedCategory === cat
                   ? "bg-orange-500 text-white"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
@@ -206,22 +201,26 @@ const MyListing = () => {
 
       {/* Table */}
       {filteredBookings.length === 0 ? (
-        <div className="flex justify-center items-center h-64">
-          <p className="text-gray-500 dark:text-gray-400">
+        <div className="flex justify-center items-center h-48 sm:h-64">
+          <p className="text-gray-500 dark:text-gray-400 text-sm sm:text-base">
             You haven't listed any cars yet!
           </p>
         </div>
       ) : (
         <div className="overflow-x-auto">
-          <table className="min-w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg">
+          <table className="min-w-full bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 rounded-lg text-sm sm:text-base">
             <thead>
               <tr className="border-b border-gray-200 dark:border-gray-700 dark:bg-gray-800 text-gray-700 dark:text-gray-200">
-                <th className="px-4 py-3 text-left">Car Name</th>
-                <th className="px-4 py-3 text-left">Rent Price</th>
-                <th className="px-4 py-3 text-left">Category</th>
-                <th className="px-4 py-3 text-left">Status</th>
-                <th className="px-4 py-3 text-left">Update</th>
-                <th className="px-4 py-3 text-left">Delete</th>
+                <th className="px-3 sm:px-4 py-2 text-left">Car Name</th>
+                <th className="px-3 sm:px-4 py-2 text-left  hidden md:block">
+                  Rent Price
+                </th>
+                <th className="px-3 sm:px-4 py-2 text-left  hidden md:block">
+                  Category
+                </th>
+                <th className="px-3 sm:px-4 py-2 text-left">Status</th>
+                <th className="px-3 sm:px-4 py-2 text-left">Update</th>
+                <th className="px-3 sm:px-4 py-2 text-left">Delete</th>
               </tr>
             </thead>
             <tbody>
@@ -230,32 +229,35 @@ const MyListing = () => {
                   key={car._id}
                   className="border-b border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
-                  <td className="px-4 py-3">{car.name}</td>
-                  <td className="px-4 py-3">${car.rent_per_day}</td>
-                  <td className="px-4 py-3">{car.category}</td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 sm:px-4 py-2">{car.name}</td>
+                  <td className="px-3 sm:px-4 py-2  hidden md:block">
+                    ${car.rent_per_day}
+                  </td>
+                  <td className="px-3 sm:px-4 py-2  hidden md:block">
+                    {car.category}
+                  </td>
+                  <td className="px-3 sm:px-4 py-2">
                     {car.status === "booked" ? (
-                      <span className="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs">
+                      <span className="bg-red-100 text-red-600 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
                         Booked
                       </span>
                     ) : (
-                      <span className="bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs">
+                      <span className="bg-green-100 text-green-600 px-2 sm:px-3 py-1 rounded-full text-xs sm:text-sm">
                         Available
                       </span>
                     )}
                   </td>
-
-                  <td className="px-4 py-3">
+                  <td className="px-3 sm:px-4 py-2">
                     <button
-                      className="bg-blue-500 hover:bg-blue-600 text-white px-3 py-1 rounded"
+                      className="bg-blue-500 hover:bg-blue-600 text-white px-2 sm:px-3 py-1 rounded text-xs sm:text-sm"
                       onClick={() => openUpdateModal(car)}
                     >
                       Update
                     </button>
                   </td>
-                  <td className="px-4 py-3">
+                  <td className="px-3 sm:px-4 py-2">
                     <button
-                      className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded"
+                      className="bg-red-500 hover:bg-red-600 text-white px-2 sm:px-3 py-1 rounded text-xs sm:text-sm"
                       onClick={() => handleDelete(car._id)}
                     >
                       Delete
@@ -270,18 +272,18 @@ const MyListing = () => {
 
       {/* Update Modal */}
       <dialog id="update_modal" className="modal modal-bottom sm:modal-middle">
-        <div className="modal-box max-w-3xl">
-          <h2 className="text-2xl font-semibold text-center mb-2 text-gray-800">
+        <div className="modal-box max-w-full sm:max-w-3xl">
+          <h2 className="text-xl sm:text-2xl font-semibold text-center mb-2 text-gray-800">
             Update Car
           </h2>
-          <p className="text-gray-500 text-sm text-center mb-6">
+          <p className="text-gray-500 text-sm sm:text-base text-center mb-6">
             Modify your car listing details below.
           </p>
 
           {selectedCar && (
             <form
               onSubmit={handleUpdateSubmit}
-              className="grid grid-cols-1 md:grid-cols-2 gap-4"
+              className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4"
             >
               <input
                 type="text"
@@ -326,7 +328,7 @@ const MyListing = () => {
                 name="image_url"
                 value={formData.image_url}
                 onChange={handleChange}
-                className="input input-bordered w-full md:col-span-2"
+                className="input input-bordered w-full sm:col-span-2"
                 required
               />
               <textarea
@@ -334,13 +336,13 @@ const MyListing = () => {
                 value={formData.description}
                 onChange={handleChange}
                 rows="4"
-                className="textarea textarea-bordered w-full md:col-span-2"
+                className="textarea textarea-bordered w-full sm:col-span-2"
                 required
               ></textarea>
               <button
                 type="submit"
                 disabled={isUpdating}
-                className="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded mt-4"
+                className="sm:col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded mt-4"
               >
                 {isUpdating ? "Updating..." : "Update Car"}
               </button>

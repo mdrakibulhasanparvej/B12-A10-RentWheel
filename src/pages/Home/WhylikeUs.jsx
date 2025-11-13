@@ -43,7 +43,9 @@ const cardVariant = {
 const WhylikeUs = () => {
   return (
     <section className="bg-gray-100 py-12 px-5 md:px-10">
-      <h2 className="text-3xl font-bold text-center mb-8">Why Rent With Us!</h2>
+      <h2 className="text-3xl  comfortaa font-extrabold  text-center mb-8">
+        Why Rent With Us!
+      </h2>
       <div className="max-w-7xl mx-auto flex  md:flex-row items-center gap-10">
         {/* Left Features */}
         <div className="flex flex-col md:flex-row gap-6 w-full">

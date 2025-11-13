@@ -4,8 +4,10 @@ import { FaCar, FaClipboardList, FaUserAlt } from "react-icons/fa";
 import { IoCarSportOutline } from "react-icons/io5";
 import { AuthContext } from "../../proviedrs/AuthProvider";
 import Loading from "../../Components/Loading";
+import useTitle from "../../hooks/useTitle";
 
 const OverView = () => {
+  useTitle("Over View");
   const [totalCars, setTotalCars] = useState([]);
   const [totalBookingCars, setTotalBookingCars] = useState([]);
   const [totalMyCars, setTotalMyCars] = useState([]);
@@ -30,7 +32,7 @@ const OverView = () => {
       setUpdatedCars(updatedCars);
     }
   }, [totalCars]);
-  console.log(updatedCars);
+  // console.log(updatedCars);
 
   // Fetch all booked cars
   useEffect(() => {

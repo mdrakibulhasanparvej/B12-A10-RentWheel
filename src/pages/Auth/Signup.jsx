@@ -2,7 +2,7 @@ import { motion } from "framer-motion";
 import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { AuthContext } from "../../proviedrs/AuthProvider";
-import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa6";
 import { toast } from "react-toastify";
 
 const Signup = () => {
@@ -89,7 +89,7 @@ const Signup = () => {
             </label>
             <input
               type="text"
-              onChange={(e) => setName(e.target.value)}
+              onChange={(e) => setPhotourl(e.target.value)}
               placeholder="Enter your photo url"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none"
             />

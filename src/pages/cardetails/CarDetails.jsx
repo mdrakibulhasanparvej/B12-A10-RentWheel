@@ -21,7 +21,7 @@ const CarDetails = () => {
     provider_name,
     provider_email,
   } = car;
-  console.log(car._id);
+  // console.log(car._id);
   const handleBooknow = async () => {
     if (currentStatus === "booked") return; // Prevent double booking
     setLoading(true);
@@ -55,7 +55,7 @@ const CarDetails = () => {
       );
 
       const bookingResult = await bookingRes.json();
-      console.log("Booking saved:", bookingResult);
+      // console.log("Booking saved:", bookingResult);
 
       // 3️ Update car status
       const bookedStatus = { _id: car._id, status: "booked" };
@@ -71,7 +71,7 @@ const CarDetails = () => {
       const statusResult = await statusRes.json();
 
       if (statusRes.ok) {
-        console.log("Car status updated:", statusResult);
+        // console.log("Car status updated:", statusResult);
         setCurrentStatus("booked"); // Update local status
         toast.success("Booking successful! Car is now booked.", {
           position: "top-right",

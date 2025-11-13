@@ -50,7 +50,7 @@ const CarType = () => {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className=" text-3xl md:text-4xl font-semibold mb-10 text-center"
+          className=" text-3xl md:text-4xl  comfortaa font-extrabold  mb-10 text-center"
         >
           Cars Types
         </motion.h2>

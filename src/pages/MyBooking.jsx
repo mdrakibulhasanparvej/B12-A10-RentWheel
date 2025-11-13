@@ -2,10 +2,12 @@ import React, { useContext, useEffect, useState } from "react";
 import Loading from "../Components/Loading";
 import CarNotFound from "./error/CarNotFound";
 import { AuthContext } from "../proviedrs/AuthProvider";
+import useTitle from "../hooks/useTitle";
 
 const statuses = ["All", "available", "booked"];
 
 const MyBooking = () => {
+  useTitle("My-Bookings");
   const { user } = useContext(AuthContext);
   const email = user?.email;
 
@@ -15,7 +17,7 @@ const MyBooking = () => {
   const [selectedStatus, setSelectedStatus] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");
 
-  console.log(bookings);
+  // console.log(bookings);
 
   // Fetch bookings from backend
   useEffect(() => {

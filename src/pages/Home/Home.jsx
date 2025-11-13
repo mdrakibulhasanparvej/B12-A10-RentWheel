@@ -5,8 +5,10 @@ import HeroSection from "./heroSection/HeroSection";
 import BrandCarousel from "./BrandSection/BrandCarousel";
 import ReviewSection from "./ReviewSection/ReviewSection";
 import FeaturedCars from "./FeaturedCars";
+import useTitle from "../../hooks/useTitle";
 
 const Home = () => {
+  useTitle("Home");
   return (
     <div className="min-h-screen">
       <HeroSection />

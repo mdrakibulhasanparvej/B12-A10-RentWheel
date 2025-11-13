@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
 import { toast } from "react-toastify";
 import { AuthContext } from "../proviedrs/AuthProvider";
+import useTitle from "../hooks/useTitle";
 
 const AddNewCar = () => {
+  useTitle("Add-Car");
   const { user } = useContext(AuthContext);
   const [loading, setLoading] = useState(false);
 

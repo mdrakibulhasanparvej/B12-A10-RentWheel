@@ -1,15 +1,16 @@
 import React from "react";
 import { motion } from "framer-motion";
+import useTitle from "../hooks/useTitle";
 
 const MyProfile = () => {
+  useTitle("My-Profile");
   return (
     <div>
       <div className="mb-6">
         <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-         My profie 
+          My profie
         </h2>
-        <p className="text-gray-500 dark:text-gray-400 text-sm">
-        </p>
+        <p className="text-gray-500 dark:text-gray-400 text-sm"></p>
       </div>
       <motion.div
         className="p-6 border border-gray-200 rounded-2xl dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm max-w-5xl mx-auto"

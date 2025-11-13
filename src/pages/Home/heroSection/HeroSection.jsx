@@ -5,7 +5,7 @@ import SwiperSlider from "./SwiperSlider";
 
 const HeroSection = () => {
   return (
-    <div className="relative h-[90vh] overflow-hidden">
+    <div className="relative h-[90vh] overflow-hidden ">
       {/* Background Slider */}
       <div className="absolute inset-0">
         <SwiperSlider />

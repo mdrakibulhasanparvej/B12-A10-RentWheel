@@ -3,6 +3,7 @@ import CarCard from "./CarCard";
 import { useLoaderData } from "react-router";
 import Loading from "../../Components/Loading";
 import CarNotFound from "../error/CarNotFound";
+import useTitle from "../../hooks/useTitle";
 
 const categories = [
   "All",
@@ -15,6 +16,7 @@ const categories = [
 ];
 
 const BrowseCars = () => {
+  useTitle("All-Cars");
   const cars = useLoaderData(); // fetch cars from loader
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [searchTerm, setSearchTerm] = useState("");

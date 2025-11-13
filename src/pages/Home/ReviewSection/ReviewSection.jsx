@@ -45,8 +45,11 @@ const ReviewSection = () => {
   return (
     <div className="bg-gray-100 dark:bg-gray-900 px-5 md:px-10 pb-20 py-12">
       <div className="text-center">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white">
-          RENTWHEELS <br /> <span className="">Luxury Car Rental In</span>
+        <h2 className="text-2xl  comfortaa font-extrabold -bold text-gray-900 dark:text-white">
+          RENTWHEELS <br />{" "}
+          <span className=" comfortaa font-extrabold ">
+            Luxury Car Rental In
+          </span>
         </h2>
         <p className="text-orange-500 font-medium h-5 mt-1">
           <span className="text-orange-500 inline-block h-10">
