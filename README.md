@@ -50,11 +50,11 @@ Users can browse available cars, view details, and book rentals for specific dat
 
 | Category            | Technologies                                                        |
 | ------------------- | ------------------------------------------------------------------- |
-| **Frontend**        | React.js, Tailwind CSS, DaisyUI, Framer Motion, Swiper.js, Recharts |
+| **Frontend**        | React.js, Tailwind CSS, DaisyUI, Framer Motion, Swiper.js,          |
 | **Backend**         | Node.js, Express.js, MongoDB                                        |
 | **Authentication**  | Firebase Auth                                                       |
 | **Hosting**         | Firebase Hosting (Client), Vercel (Server)                          |
-| **UI Enhancements** | Framer Motion, Lottie React, SweetAlert2, React Toastify            |
+| **UI Enhancements** | Framer Motion, SweetAlert2, React Toastify                          |
 
 ---
 
