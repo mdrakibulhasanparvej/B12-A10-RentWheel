@@ -174,7 +174,7 @@ const Signup = () => {
         </form>
         <button
           onClick={handlegooglelogin}
-          className="w-full flex items-center justify-center gap-3 bg-linear-to-r from-orange-400 to-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
+          className="w-full mt-5 flex items-center justify-center gap-3 bg-linear-to-r from-orange-400 to-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
         >
           <FaGoogle /> Continue with google
         </button>
