@@ -11,7 +11,7 @@ Users can browse available cars, view details, and book rentals for specific dat
 
 ---
 
-## 🧩 Core Features
+## Core Features
 
 - **User Authentication:**  
   Secure login/register system using Firebase Authentication with email/password and Google sign-in.
@@ -60,26 +60,25 @@ Users can browse available cars, view details, and book rentals for specific dat
 
 ## Dependencies
 
-```json
-"dependencies": {
-  "@tailwindcss/vite": "^4.1.17",
-  "axios": "^1.13.2",
-  "daisyui": "^5.4.7",
-  "firebase": "^12.5.0",
-  "framer-motion": "^12.23.24",
-  "lottie-react": "^2.4.1",
-  "react": "^19.1.1",
-  "react-dom": "^19.1.1",
-  "react-fast-marquee": "^1.6.5",
-  "react-icons": "^5.5.0",
-  "react-intersection-observer": "^10.0.0",
-  "react-router": "^7.9.5",
-  "react-simple-typewriter": "^5.0.1",
-  "react-toastify": "^11.0.5",
-  "react-tooltip": "^5.30.0",
-  "recharts": "^3.4.1",
-  "sweetalert2": "^11.26.3",
-  "swiper": "^12.0.3",
-  "tailwindcss": "^4.1.17"
-}
+```
+
+  - tailwindcss/vite: 4.1.17
+  - daisyui: 5.4.7
+  - firebase: 12.5.0
+  - framer-motion 12.23.24
+  - lottie-react":2.4.1
+  - react:19.1.1
+  - react-dom:19.1.1
+  - react-fast-marquee: 1.6.5
+  - react-icons: 5.5.0
+  - react-intersection-observer: 10.0.0
+  - react-router: 7.7.5
+  - react-simple-typewriter: 5.0.1
+  - react-toastify: 11.0.5
+  - react-tooltip: 5.30.0
+  - recharts: 3.4.1
+  - sweetalert2: 11.26.3
+  - swiper: 12.0.3
+  - tailwindcss: 4.1.1
+
 ```
