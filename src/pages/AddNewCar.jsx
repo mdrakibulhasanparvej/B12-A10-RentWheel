@@ -51,9 +51,11 @@ const AddNewCar = () => {
   };
 
   return (
-    <div className="max-w-3xl mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+    <div className="max-w-3xl mx-auto mt-10 p-6 bg-white dark:bg-gray-800 border dark:border-gray-200 shadow-lg rounded-lg">
       <div className="mb-6 text-center">
-        <h2 className="text-2xl font-semibold text-gray-800">Add New Car</h2>
+        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
+          Add New Car
+        </h2>
         <p className="text-gray-500 text-sm">
           Fill out the form below to list a new car for rent.
         </p>
@@ -68,7 +70,7 @@ const AddNewCar = () => {
           type="text"
           name="name"
           placeholder="Car Name"
-          className="input input-bordered w-full"
+          className="input text-gray-800 dark:text-white bg-white dark:bg-gray-900  input-bordered w-full"
           required
         />
 
@@ -77,7 +79,7 @@ const AddNewCar = () => {
           type="number"
           name="rent_per_day"
           placeholder="Rent Price (Per Day)"
-          className="input input-bordered w-full"
+          className="input text-gray-800 dark:text-white bg-white dark:bg-gray-900  input-bordered w-full"
           required
         />
 
@@ -86,24 +88,24 @@ const AddNewCar = () => {
           type="text"
           name="location"
           placeholder="Location"
-          className="input input-bordered w-full"
+          className="input text-gray-800 dark:text-white bg-white dark:bg-gray-900  input-bordered w-full"
           required
         />
 
         {/* Category */}
         <select
           name="category"
-          className="select select-bordered w-full"
+          className="select text-gray-800 dark:text-white bg-white dark:bg-gray-900  select-bordered w-full"
           defaultValue=""
           required
         >
           <option value="" disabled>
             Select Category
           </option>
-          <option value="Sports">Sports</option>
-          <option value="Suv">Suv</option>
-          <option value="Exotic">Exotic</option>
-          <option value="Convertible">Convertible</option>
+          <option value="sports">Sports</option>
+          <option value="suv">Suv</option>
+          <option value="exotic">Exotic</option>
+          <option value="convertible">Convertible</option>
           <option value="Luxury">Luxury</option>
           <option value="Economy">Economy</option>
         </select>
@@ -113,7 +115,7 @@ const AddNewCar = () => {
           type="text"
           name="image_url"
           placeholder="Hosted Image URL"
-          className="input input-bordered w-full md:col-span-2"
+          className="input text-gray-800 dark:text-white bg-white dark:bg-gray-900 input-bordered w-full md:col-span-2"
           required
         />
 
@@ -122,7 +124,7 @@ const AddNewCar = () => {
           name="description"
           placeholder="Car Description"
           rows="4"
-          className="textarea textarea-bordered w-full md:col-span-2"
+          className="textarea text-gray-800 dark:text-white bg-white dark:bg-gray-900  textarea-bordered w-full md:col-span-2"
           required
         ></textarea>
 
@@ -130,13 +132,13 @@ const AddNewCar = () => {
         <input
           type="text"
           value={user?.displayName || "Anonymous Provider"}
-          className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+          className="input text-gray-800 dark:text-white dark:bg-gray-800 input-bordered w-full bg-gray-100 cursor-not-allowed"
           readOnly
         />
         <input
           type="email"
           value={user?.email || ""}
-          className="input input-bordered w-full bg-gray-100 cursor-not-allowed"
+          className="input text-gray-800 dark:text-white dark:bg-gray-800 input-bordered w-full bg-gray-100 cursor-not-allowed"
           readOnly
         />
 
@@ -144,7 +146,7 @@ const AddNewCar = () => {
         <button
           type="submit"
           disabled={loading}
-          className="md:col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded mt-4 transition duration-200"
+          className="md:col-span-2 bg-linear-to-r from-orange-400 to-orange-600 hover:bg-orange-600 text-white font-semibold py-2 rounded mt-4 transition duration-200"
         >
           {loading ? "Adding..." : "Add Car"}
         </button>

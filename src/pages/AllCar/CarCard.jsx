@@ -28,7 +28,7 @@ const CarCard = ({ car }) => {
       <span
         className={`absolute top-2 right-2 text-xs font-semibold text-white px-2 py-1 rounded-full ${statusColor}`}
       >
-        {status === "available" ? "Available" : "Unavailable"}
+        {status === "available" ? "Available" : "Booked"}
       </span>
 
       {/* Car Image */}
@@ -60,7 +60,7 @@ const CarCard = ({ car }) => {
       {/* View Details Button */}
       <NavLink
         to={`/cardetails/${_id}`}
-        className="mt-4 bg-orange-500 hover:bg-orange-600 text-white font-medium px-4 py-2 rounded text-center"
+        className="mt-4 bg-linear-to-r from-orange-400 to-orange-600 hover:bg-orange-600 text-white font-medium px-4 py-2 rounded text-center"
       >
         View Details
       </NavLink>

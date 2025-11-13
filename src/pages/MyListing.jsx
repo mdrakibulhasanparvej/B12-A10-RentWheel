@@ -189,7 +189,7 @@ const MyListing = () => {
               onClick={() => setSelectedCategory(cat)}
               className={`px-3 py-1 cursor-pointer sm:px-4 sm:py-2 rounded font-medium text-sm sm:text-base ${
                 selectedCategory === cat
-                  ? "bg-orange-500 text-white"
+                  ? "bg-linear-to-r from-orange-400 to-orange-600 text-white"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
               }`}
             >
@@ -265,10 +265,10 @@ const MyListing = () => {
       {/* Update Modal */}
       <dialog id="update_modal" className="modal modal-bottom sm:modal-middle">
         <div className="modal-box max-w-full sm:max-w-3xl text-gray-800 dark:text-white bg-white dark:bg-gray-800">
-          <h2 className="text-xl sm:text-2xl font-semibold text-center mb-2 text-gray-800">
+          <h2 className="text-xl sm:text-2xl font-semibold text-center mb-2 text-gray-800 dark:text-white">
             Update Car
           </h2>
-          <p className="text-gray-500 text-sm sm:text-base text-center mb-6">
+          <p className="text-gray-500 dark:text-gray-300 text-sm sm:text-base text-center mb-6">
             Modify your car listing details below.
           </p>
 
@@ -334,7 +334,7 @@ const MyListing = () => {
               <button
                 type="submit"
                 disabled={isUpdating}
-                className="sm:col-span-2 bg-orange-500 hover:bg-orange-600 text-white font-semibold py-2 rounded mt-4"
+                className="sm:col-span-2 bg-linear-to-r from-orange-400 to-orange-600 hover:bg-orange-600 text-white font-semibold py-2 rounded mt-4"
               >
                 {isUpdating ? "Updating..." : "Update Car"}
               </button>

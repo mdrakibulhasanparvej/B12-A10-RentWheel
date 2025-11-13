@@ -12,7 +12,7 @@ const NotFound = () => {
         animate={{ scale: 1.1 }}
         transition={{ duration: 10, repeat: Infinity, repeatType: "mirror" }}
       >
-        <div className="w-96 h-96 bg-orange-500/30 blur-3xl rounded-full absolute top-1/3 left-1/4"></div>
+        <div className="w-96 h-96 bg-linear-to-r from-orange-400 to-orange-600/30 blur-3xl rounded-full absolute top-1/3 left-1/4"></div>
         <div className="w-80 h-80 bg-yellow-400/20 blur-3xl rounded-full absolute top-1/2 right-1/3"></div>
       </motion.div>
 
@@ -31,7 +31,7 @@ const NotFound = () => {
 
         <Link
           to="/"
-          className="inline-flex items-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
+          className="inline-flex items-center gap-2 bg-linear-to-r from-orange-400 to-orange-600 hover:bg-orange-600 text-white font-medium px-6 py-3 rounded-lg transition-all duration-300 shadow-md hover:shadow-lg"
         >
           Back to Home
         </Link>

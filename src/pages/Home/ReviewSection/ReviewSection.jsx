@@ -69,7 +69,7 @@ const ReviewSection = () => {
             Based on 6003 reviews
           </span>
         </div>
-        <button className="mt-4 bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 transition">
+        <button className="mt-4 bg-linear-to-r from-orange-400 to-orange-600 text-white px-4 py-2 rounded hover:bg-orange-600 transition">
           Review us on Google
         </button>
       </div>

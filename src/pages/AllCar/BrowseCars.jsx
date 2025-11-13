@@ -50,7 +50,7 @@ const BrowseCars = () => {
                 onClick={() => setSelectedCategory(category)}
                 className={`px-4 py-2 cursor-pointer rounded font-medium ${
                   selectedCategory === category
-                    ? "bg-orange-500 text-white "
+                    ? "bg-linear-to-r from-orange-400 to-orange-600 text-white "
                     : "bg-gray-200 text-gray-700 hover:bg-gray-300"
                 }`}
               >

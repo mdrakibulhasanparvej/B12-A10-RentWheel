@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, NavLink } from "react-router";
+import { Link } from "react-router";
 import { PiCarSimpleFill, PiPhoneCallFill } from "react-icons/pi";
 import {
   IoAddCircle,
@@ -8,13 +8,12 @@ import {
   IoLogIn,
   IoLogoWhatsapp,
 } from "react-icons/io5";
-import { FaGear } from "react-icons/fa6";
 import { IoLogOutOutline } from "react-icons/io5";
-import MyLinks from "./MyLinks";
-import { FaListAlt, FaUser } from "react-icons/fa";
-import { MdSpaceDashboard } from "react-icons/md";
+import { FaListAlt } from "react-icons/fa";
+import { MdDarkMode, MdLightMode, MdSpaceDashboard } from "react-icons/md";
 import { CgProfile } from "react-icons/cg";
 import { AuthContext } from "../proviedrs/AuthProvider";
+import MyLinks from "./MyLinks";
 import { toast } from "react-toastify";
 
 const Navbar = () => {
@@ -263,14 +262,20 @@ const Navbar = () => {
                   <li className="text-xs">{user.email}</li>
                 </div>
                 {links2}
-
-                <input
-                  onChange={(e) => handleTheme(e.target.checked)}
-                  type="checkbox"
-                  defaultChecked={localStorage.getItem("theme") === "dark"}
-                  className="toggle"
-                />
-
+                <div className="px-3">
+                  <span>
+                    <MdLightMode />
+                  </span>
+                  <input
+                    onChange={(e) => handleTheme(e.target.checked)}
+                    type="checkbox"
+                    defaultChecked={localStorage.getItem("theme") === "dark"}
+                    className="toggle"
+                  />
+                  <span>
+                    <MdDarkMode />
+                  </span>
+                </div>
                 <li>
                   <button
                     onClick={handleLogout}
@@ -285,13 +290,13 @@ const Navbar = () => {
             <div className="flex gap-2">
               <Link
                 to="/auth/login"
-                className="btn rounded-full border-gray-300 btn-xs sm:btn-sm bg-gradient-to-r from-orange-400 to-orange-600 text-white"
+                className="btn rounded-full border-gray-300 btn-xs sm:btn-sm bg-linear-to-r from-orange-400 to-orange-600 text-white"
               >
                 <IoLogIn /> Login
               </Link>
               <Link
                 to="/auth/Signup"
-                className="btn rounded-full border-gray-300 btn-xs sm:btn-sm bg-gradient-to-r from-orange-400 to-orange-600 text-white"
+                className="btn rounded-full border-gray-300 btn-xs sm:btn-sm bg-linear-to-r from-orange-400 to-orange-600 text-white"
               >
                 Register
               </Link>

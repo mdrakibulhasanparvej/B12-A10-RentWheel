@@ -1,19 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import { motion } from "framer-motion";
 import useTitle from "../hooks/useTitle";
+import { AuthContext } from "../proviedrs/AuthProvider";
 
 const MyProfile = () => {
   useTitle("My-Profile");
+
+  const { user } = useContext(AuthContext);
+  console.log(user.displayName);
+  console.log(user.email);
+  console.log(user.photoURL);
   return (
     <div>
       <div className="mb-6">
-        <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
+        <h2 className="px-6 text-2xl font-semibold text-gray-800 dark:text-white">
           My profie
         </h2>
         <p className="text-gray-500 dark:text-gray-400 text-sm"></p>
       </div>
       <motion.div
-        className="p-6 border border-gray-200 rounded-2xl dark:border-gray-800 bg-white dark:bg-gray-900 shadow-sm max-w-5xl mx-auto"
+        className="p-6 rounded-2xl dark:border-gray-800  max-w-5xl mx-auto"
         initial={{ opacity: 0, y: 30 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: "easeOut" }}
@@ -35,7 +41,7 @@ const MyProfile = () => {
               transition={{ delay: 0.3, duration: 0.5 }}
             >
               <img
-                src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+                src={user.photoURL}
                 alt="User Avatar"
                 className="w-full h-full object-cover"
               />
@@ -44,27 +50,27 @@ const MyProfile = () => {
             {/* Text Info */}
             <div className="text-center lg:text-left">
               <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
-                Rakibul Hasan
+                {user.displayName}
               </h2>
               <div className="flex gap-3 flex-wrap justify-center lg:justify-start">
                 <p className="text-sm text-gray-500 dark:text-gray-400">
-                  Full-Stack Developer
+                  {user.email}
                 </p>
-                <p className="text-sm text-gray-500 dark:text-gray-400">
+                {/* <p className="text-sm text-gray-500 dark:text-gray-400">
                   Dhaka, Bangladesh
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
 
           {/* Edit Button */}
-          <motion.button
+          {/* <motion.button
             className="px-5 py-2 border border-gray-300 rounded-full bg-white text-gray-700 font-medium shadow-sm hover:bg-gray-100 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700 transition"
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
           >
             Edit Profile
-          </motion.button>
+          </motion.button> */}
         </motion.div>
 
         {/* Basic Info Section */}

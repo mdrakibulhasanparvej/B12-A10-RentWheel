@@ -56,7 +56,7 @@ const MyBooking = () => {
     .filter((b) => b.name.toLowerCase().includes(searchTerm.toLowerCase()));
 
   return (
-    <div className="text-gray-800 dark:text-white">
+    <div className="px-4 sm:px-6 md:px-8 lg:px-10 text-gray-800 dark:text-white">
       {/* Title */}
       <div className="mb-6 gap-5 flex flex-col md:flex-row md:justify-between">
         <div>
@@ -92,7 +92,7 @@ const MyBooking = () => {
               onClick={() => setSelectedStatus(status)}
               className={`px-4 py-2 cursor-pointer rounded font-medium ${
                 selectedStatus === status
-                  ? "bg-orange-500 text-white"
+                  ? "bg-linear-to-r from-orange-400 to-orange-600 text-white"
                   : "bg-gray-200 text-gray-700 hover:bg-gray-300"
               }`}
             >
