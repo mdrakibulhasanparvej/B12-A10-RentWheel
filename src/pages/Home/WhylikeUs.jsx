@@ -44,7 +44,7 @@ const WhylikeUs = () => {
   return (
     <section className="bg-gray-100 dark:bg-gray-900 text-gray-800 dark:text-white py-12 px-5 md:px-10">
       <h2 className="text-3xl  comfortaa font-extrabold  text-center mb-8">
-        Why Rent With Us!
+        Why Rent <span className="text-orange-500 comfortaa">With Us!</span>
       </h2>
       <div className="max-w-7xl mx-auto flex  md:flex-row items-center gap-10">
         {/* Left Features */}

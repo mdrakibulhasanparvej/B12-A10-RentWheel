@@ -18,6 +18,7 @@ import NotFound from "../pages/error/NotFound";
 import PrivateRoutess from "../proviedrs/PrivateRouter";
 import About from "../pages/About";
 import ContactUs from "../pages/ContactUs";
+import ViewOffers from "../pages/Home/heroSection/ViewOffers";
 
 const router = createBrowserRouter([
   {
@@ -36,6 +37,10 @@ const router = createBrowserRouter([
       {
         path: "/contactus",
         element: <ContactUs />,
+      },
+      {
+        path: "/viewOffers",
+        element: <ViewOffers />,
       },
       {
         path: "/all-cars",

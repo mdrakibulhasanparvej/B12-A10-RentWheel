@@ -40,7 +40,7 @@ const FeaturedCars = () => {
     <section className="py-10 bg-gray-100 dark:bg-gray-900">
       <div className="container mx-auto px-5 md:px-10">
         <h2 className="text-3xl text-gray-800 dark:text-white  comfortaa font-extrabold  text-center mb-8">
-          Latest Cars
+          Latest <span className="text-orange-500 comfortaa">Cars</span>
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {cars.map((car, index) => (

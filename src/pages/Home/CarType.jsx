@@ -52,7 +52,7 @@ const CarType = () => {
           viewport={{ once: true }}
           className=" text-3xl md:text-4xl text-gray-800 dark:text-white comfortaa font-extrabold  mb-10 text-center"
         >
-          Cars Types
+          Cars <span className="text-orange-500 comfortaa">Types</span>
         </motion.h2>
 
         {/* Grid */}

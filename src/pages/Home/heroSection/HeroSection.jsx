@@ -4,12 +4,17 @@ import SwiperSlider from "./SwiperSlider";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router";
 import { toast } from "react-toastify";
+import ViewFleetModal from "./ViewFleetModal";
+import ViewOfferModal from "./ViewOfferModal";
 
 const HeroSection = () => {
   const [query, setQuery] = useState("");
   const [cars, setCars] = useState([]);
   const [filteredCars, setFilteredCars] = useState([]);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [openFleet, setOpenFleet] = useState(false);
+  const [openOffer, setOpenOffer] = useState(false);
+
   // const [loading, setLoading] = useState(false);
 
   // console.log(cars);
@@ -70,7 +75,7 @@ const HeroSection = () => {
   }, [query, cars]);
 
   return (
-    <div className="relative h-[90vh] overflow-hidden">
+    <div className="relative h-[70vh] overflow-hidden">
       {/* Background Slider */}
       <div className="absolute inset-0">
         <SwiperSlider />
@@ -174,12 +179,27 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.8 }}
         >
-          <button className="px-6 py-2 border border-white rounded-md hover:bg-white hover:text-black transition font-semibold">
+          <button
+            onClick={() => setOpenFleet(true)}
+            className="px-6 py-2 border border-white rounded-md hover:bg-white hover:text-black transition font-semibold"
+          >
             View Fleet
           </button>
-          <button className="px-6 py-2 border border-white rounded-md hover:bg-white hover:text-black transition font-semibold">
+          <ViewFleetModal
+            isOpen={openFleet}
+            onClose={() => setOpenFleet(false)}
+          />
+          <button
+            onClick={() => setOpenOffer(true)}
+            className="px-6 py-2 border border-white rounded-md hover:bg-white hover:text-black transition font-semibold"
+          >
             Special Offers
           </button>
+
+          <ViewOfferModal
+            isOpen={openOffer}
+            onClose={() => setOpenOffer(false)}
+          />
         </motion.div>
 
         {/* Bottom Text */}

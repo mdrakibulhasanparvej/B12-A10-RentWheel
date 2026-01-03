@@ -62,7 +62,7 @@ const BrandCarousel = () => {
   return (
     <div className="bg-gray-100 dark:bg-gray-900 py-12 px-6 md:px-10 relative overflow-hidden">
       <h2 className="text-2xl comfortaa font-extrabold text-center text-gray-800 dark:text-white mb-6">
-        Top Car Brands
+        Top Car <span className="text-orange-500 comfortaa">Brands</span>
       </h2>
 
       {/* Carousel Container */}
