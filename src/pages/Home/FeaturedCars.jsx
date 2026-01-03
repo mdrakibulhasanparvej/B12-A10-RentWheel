@@ -13,7 +13,7 @@ const FeaturedCars = () => {
       .then((res) => res.json())
       .then((data) => {
         const sortedCars = data.sort(
-          (a, b) => new Date(b.updated_at) - new Date(a.updated_at)
+          (a, b) => new Date(b.created_at) - new Date(a.created_at)
         );
         setCars(sortedCars.slice(0, 6));
         setLoading(false);

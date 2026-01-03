@@ -149,7 +149,7 @@ const CarDetails = () => {
               </div>
               <div>
                 <strong>Status:</strong>{" "}
-                {currentStatus == "booked" && "unavailable"}
+                {currentStatus == "booked" ? "unavailable" : "Available"}
               </div>
               <div>
                 <strong>Provider:</strong> {provider_name}

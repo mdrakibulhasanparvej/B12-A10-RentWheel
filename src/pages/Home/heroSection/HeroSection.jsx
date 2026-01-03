@@ -12,7 +12,7 @@ const HeroSection = () => {
   const [showDropdown, setShowDropdown] = useState(false);
   // const [loading, setLoading] = useState(false);
 
-  console.log(cars);
+  // console.log(cars);
 
   useEffect(() => {
     // setLoading(true); // start loader

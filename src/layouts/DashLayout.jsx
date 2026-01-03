@@ -11,9 +11,9 @@ import { FaListAlt } from "react-icons/fa";
 const DashLayout = () => {
   return (
     <div className="bg-gray-100">
-      <header>
+
         <Navbar></Navbar>
-      </header>
+
       <main className="container p-6 gap-5 flex flex-col lg:flex-row mx-auto bg-gray-100 dark:bg-gray-900">
         <section className="w-full lg:w-1/5 p-5 text-gray-800 dark:text-white bg-white dark:bg-gray-800 shadow-sm md:mr-0 lg:mr-6 rounded-2xl">
           <div className="w-full font-bold text-[10px] sm:text-[12px] md:text-[15px] lg:text-[16px] flex flex-wrap lg:flex-col gap-3 sm:gap-1">

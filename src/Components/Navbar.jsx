@@ -62,8 +62,14 @@ const Navbar = () => {
           All Cars
         </MyLinks>
       </li>
+      <li>
+        <MyLinks to="/aboutus">About Us</MyLinks>
+      </li>
+      <li>
+        <MyLinks to="/contactus">Contact Us</MyLinks>
+      </li>
 
-      {user && (
+      {/* {user && (
         <div className="flex flex-col md:flex-row">
           <li>
             <MyLinks to="/dashboard/mybooking">
@@ -86,7 +92,7 @@ const Navbar = () => {
             </MyLinks>
           </li>
         </div>
-      )}
+      )} */}
     </>
   );
   const links2 = (
@@ -133,19 +139,13 @@ const Navbar = () => {
           My Listings
         </MyLinks>
       </li>
-      {/* <li>
-        <MyLinks to="/aboutus">About Us</MyLinks>
-      </li>
-      <li>
-        <MyLinks to="/contactus">Contact Us</MyLinks>
-      </li> */}
     </>
   );
 
   return (
-    <div className="relative dark:bg-gray-800 ">
-      <div className="py-1 flex justify-end text-gray-800 dark:text-white items-center px-5 md:px-10">
-        <div className="right-side ">
+    <>
+      <div className="py-1 flex justify-end dark:bg-gray-800 text-gray-800 dark:text-white items-center px-5 md:px-10">
+        <div className="right-side">
           <h2 className="flex items-center gap-2 text-xs md:text-sm lg:text-base">
             <span>
               <PiPhoneCallFill />
@@ -159,7 +159,6 @@ const Navbar = () => {
         </div>
 
         {/* login logout toggle */}
-
         {/* <div className="leftsiede">
           {user ? (
             <button
@@ -187,124 +186,129 @@ const Navbar = () => {
         </div> */}
       </div>
 
-      <div className="navbar bg-white dark:bg-gray-800 text-gray-800 dark:text-white sticky top-0 z-50 pr-5 md:px-10 border-b border-gray-300 shadow-md">
-        <div className="navbar-start  ">
-          <div className="dropdown ">
-            <div
-              tabIndex={0}
-              role="button"
-              className="-pl-5 btn btn-ghost lg:hidden"
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                {" "}
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h8m-8 6h16"
-                />{" "}
-              </svg>
-            </div>
-            <ul
-              tabIndex="-1"
-              className="menu bg-white dark:bg-gray-800 menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow"
-            >
-              {links}
-            </ul>
-          </div>
-          <Link to="/" className="md:text-2xl flex items-center font-extrabold">
-            <span>
-              <img
-                src="/logo.png"
-                className="w-4 h-4  md:w-6 md:h-6 mr-6 md:mr-2"
-                alt="rent_wheels_logo"
-              />
-            </span>
-            RENT<span className="text-orange-500">WHEELS</span>
-          </Link>
-        </div>
-        <div className="navbar-center hidden lg:flex">
-          <ul className="font-bold menu menu-horizontal px-1">{links}</ul>
-        </div>
-
-        {/* new user icon */}
-        <div className="navbar-end gap-3">
-          {user ? (
-            <div className="dropdown dropdown-end z-50 ">
+      <div className=" sticky top-0 z-100">
+        <div className="navbar bg-white dark:bg-gray-800 text-gray-800 dark:text-white pr-5 md:px-10 border-b border-gray-300 shadow-md">
+          <div className="navbar-start  ">
+            <div className="dropdown ">
               <div
                 tabIndex={0}
                 role="button"
-                className="btn btn-ghost btn-circle avatar"
+                className="-pl-5 btn btn-ghost lg:hidden"
               >
-                <div className="w-9 border-2 border-gray-300 rounded-full">
-                  <img
-                    alt="Tailwind CSS Navbar component"
-                    referrerPolicy="no-referrer"
-                    src={
-                      user.photoURL ||
-                      "https://threedio-prod-var-cdn.icons8.com/vb/preview_sets/previews/JpZQHPMv0qeSmJHp.webp"
-                    }
-                  />
-                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  {" "}
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />{" "}
+                </svg>
               </div>
               <ul
                 tabIndex="-1"
-                className="menu text-gray-800 dark:text-white bg-white dark:bg-gray-800 menu-sm dropdown-content rounded-box z-50 mt-3 w-60 p-2 shadow"
+                className="menu bg-white dark:bg-gray-800 menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow"
               >
-                <div className=" pb-3 border-b border-b-gray-200">
-                  <li className="text-sm font-bold">{user.displayName}</li>
-                  <li className="text-xs">{user.email}</li>
-                </div>
-                {links2}
-                <div className="px-3 flex gap-2 items-center">
-                  <span className="text-xl">
-                    <MdLightMode />
-                  </span>
-                  <input
-                    onChange={(e) => handleTheme(e.target.checked)}
-                    type="checkbox"
-                    defaultChecked={localStorage.getItem("theme") === "dark"}
-                    className="toggle"
-                  />
-                  <span className="text-xl">
-                    <MdDarkMode />
-                  </span>
-                </div>
-                <li>
-                  <button
-                    onClick={handleLogout}
-                    className="btn mt-3 btn-xs text-left bg-linear-to-br from-orange-500 to-yellow-400 text-white"
-                  >
-                    <IoLogOutOutline /> Logout
-                  </button>
-                </li>
+                {links}
               </ul>
             </div>
-          ) : (
-            <div className="flex gap-2">
-              <Link
-                to="/auth/login"
-                className="btn rounded-full border-gray-300 btn-xs sm:btn-sm bg-linear-to-r from-orange-400 to-orange-600 text-white"
-              >
-                <IoLogIn /> Login
-              </Link>
-              <Link
-                to="/auth/Signup"
-                className="btn rounded-full border-gray-300 btn-xs sm:btn-sm bg-linear-to-r from-orange-400 to-orange-600 text-white"
-              >
-                Register
-              </Link>
-            </div>
-          )}
+            <Link
+              to="/"
+              className="md:text-2xl flex items-center font-extrabold"
+            >
+              <span>
+                <img
+                  src="/logo.png"
+                  className="w-4 h-4  md:w-6 md:h-6 mr-6 md:mr-2"
+                  alt="rent_wheels_logo"
+                />
+              </span>
+              RENT<span className="text-orange-500">WHEELS</span>
+            </Link>
+          </div>
+          <div className="navbar-center hidden lg:flex">
+            <ul className="font-bold menu menu-horizontal px-1">{links}</ul>
+          </div>
+
+          {/* new user icon */}
+          <div className="navbar-end gap-3">
+            {user ? (
+              <div className="dropdown dropdown-end z-50 ">
+                <div
+                  tabIndex={0}
+                  role="button"
+                  className="btn btn-ghost btn-circle avatar"
+                >
+                  <div className="w-9 border-2 border-gray-300 rounded-full">
+                    <img
+                      alt="Tailwind CSS Navbar component"
+                      referrerPolicy="no-referrer"
+                      src={
+                        user.photoURL ||
+                        "https://threedio-prod-var-cdn.icons8.com/vb/preview_sets/previews/JpZQHPMv0qeSmJHp.webp"
+                      }
+                    />
+                  </div>
+                </div>
+                <ul
+                  tabIndex="-1"
+                  className="menu text-gray-800 dark:text-white bg-white dark:bg-gray-800 menu-sm dropdown-content rounded-box z-50 mt-3 w-60 p-2 shadow"
+                >
+                  <div className=" pb-3 border-b border-b-gray-200">
+                    <li className="text-sm font-bold">{user.displayName}</li>
+                    <li className="text-xs">{user.email}</li>
+                  </div>
+                  {links2}
+                  <div className="px-3 flex gap-2 items-center">
+                    <span className="text-xl">
+                      <MdLightMode />
+                    </span>
+                    <input
+                      onChange={(e) => handleTheme(e.target.checked)}
+                      type="checkbox"
+                      defaultChecked={localStorage.getItem("theme") === "dark"}
+                      className="toggle"
+                    />
+                    <span className="text-xl">
+                      <MdDarkMode />
+                    </span>
+                  </div>
+                  <li>
+                    <button
+                      onClick={handleLogout}
+                      className="btn mt-3 btn-xs text-left bg-linear-to-br from-orange-500 to-yellow-400 text-white"
+                    >
+                      <IoLogOutOutline /> Logout
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            ) : (
+              <div className="flex gap-2">
+                <Link
+                  to="/auth/login"
+                  className="btn rounded-full border-gray-300 btn-xs sm:btn-sm bg-linear-to-r from-orange-400 to-orange-600 text-white"
+                >
+                  <IoLogIn /> Login
+                </Link>
+                <Link
+                  to="/auth/Signup"
+                  className="btn rounded-full border-gray-300 btn-xs sm:btn-sm bg-linear-to-r from-orange-400 to-orange-600 text-white"
+                >
+                  Register
+                </Link>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

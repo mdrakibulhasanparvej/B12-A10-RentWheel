@@ -16,6 +16,8 @@ import Loading from "../Components/Loading";
 import AddNewCar from "../pages/AddNewCar";
 import NotFound from "../pages/error/NotFound";
 import PrivateRoutess from "../proviedrs/PrivateRouter";
+import About from "../pages/About";
+import ContactUs from "../pages/ContactUs";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +28,14 @@ const router = createBrowserRouter([
       {
         index: true,
         element: <Home />,
+      },
+      {
+        path: "/aboutus",
+        element: <About />,
+      },
+      {
+        path: "/contactus",
+        element: <ContactUs />,
       },
       {
         path: "/all-cars",
