@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loading from "../../Components/Loading";
 import { motion } from "framer-motion";
 import CarCard from "../../pages/AllCar/CarCard";
+import CarCardSkeleton from "../../Components/Skeleton/CarCardSkeleton";
 
 const FeaturedCars = () => {
   const [cars, setCars] = useState([]);
@@ -15,7 +16,7 @@ const FeaturedCars = () => {
         const sortedCars = data.sort(
           (a, b) => new Date(b.created_at) - new Date(a.created_at)
         );
-        setCars(sortedCars.slice(0, 6));
+        setCars(sortedCars.slice(0, 8));
         setLoading(false);
       })
       .catch((err) => {
@@ -25,7 +26,20 @@ const FeaturedCars = () => {
   }, [loading]);
 
   if (loading) {
-    return <Loading />;
+    return (
+      <section className="py-10 bg-gray-100 dark:bg-gray-900">
+        <div className="container mx-auto px-5 md:px-10">
+          <h2 className="text-3xl text-gray-800 dark:text-white  comfortaa font-extrabold  text-center mb-8">
+            Latest <span className="text-orange-500 comfortaa">Cars</span>
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {Array.from({ length: 8 }).map((_, idx) => (
+              <CarCardSkeleton key={idx} />
+            ))}
+          </div>
+        </div>
+      </section>
+    );
   }
 
   if (cars.length === 0) {
@@ -42,7 +56,7 @@ const FeaturedCars = () => {
         <h2 className="text-3xl text-gray-800 dark:text-white  comfortaa font-extrabold  text-center mb-8">
           Latest <span className="text-orange-500 comfortaa">Cars</span>
         </h2>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {cars.map((car, index) => (
             <motion.div
               key={car._id}

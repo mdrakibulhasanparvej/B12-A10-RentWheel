@@ -44,8 +44,6 @@ const router = createBrowserRouter([
       },
       {
         path: "/all-cars",
-        loader: () => fetch("https://rent-wheels-server-eosin.vercel.app/cars"),
-        hydrateFallbackElement: <Loading />,
         element: <BrowseCars />,
       },
       {
@@ -56,11 +54,9 @@ const router = createBrowserRouter([
           ),
         hydrateFallbackElement: <Loading />,
         element: (
-          <PrivateRoutess>
-            <React.Suspense fallback={<Loading />}>
-              <CarDetails />
-            </React.Suspense>
-          </PrivateRoutess>
+          <React.Suspense fallback={<Loading />}>
+            <CarDetails />
+          </React.Suspense>
         ),
       },
     ],

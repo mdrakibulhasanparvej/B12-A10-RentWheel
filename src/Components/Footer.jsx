@@ -7,6 +7,7 @@ import {
   FaEnvelope,
   FaPhoneAlt,
 } from "react-icons/fa";
+import { Link } from "react-router";
 
 const Footer = () => {
   return (
@@ -26,10 +27,18 @@ const Footer = () => {
             availability
           </p>
           <div className="flex space-x-4 text-gray-600 dark:text-gray-200 text-lg">
-            <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
-            <FaInstagram className="hover:text-pink-600 cursor-pointer" />
-            <FaTwitter className="hover:text-sky-500 cursor-pointer" />
-            <FaYoutube className="hover:text-red-600 cursor-pointer" />
+            <Link to="https://www.facebook.com/md.rakibulhasanparvej">
+              <FaFacebookF className="hover:text-blue-600 cursor-pointer" />
+            </Link>
+            <Link to='https://www.instagram.com/md.rakibulhasanparvej'>
+              <FaInstagram className="hover:text-pink-600 cursor-pointer" />
+            </Link>
+            <Link to=''>
+              <FaTwitter className="hover:text-sky-500 cursor-pointer" />
+            </Link>
+            <Link to='https://www.youtube.com/rakibulacademy'>
+              <FaYoutube className="hover:text-red-600 cursor-pointer" />
+            </Link>
           </div>
         </div>
 
@@ -94,16 +103,21 @@ const Footer = () => {
         <div>
           <h3 className="font-semibold mb-3">Download App</h3>
           <div className="space-y-3">
-            <img
-              src="/apple_app_store.png"
-              alt="App Store"
-              className="w-50 cursor-pointer hover:opacity-80"
-            />
-            <img
-              src="/Google_Play.png"
-              alt="Google Play"
-              className="w-50 cursor-pointer hover:opacity-80"
-            />
+            <Link to="https://www.apple.com/app-store">
+              <img
+                src="/apple_app_store.png"
+                alt="App Store"
+                className="w-50 cursor-pointer hover:opacity-80"
+              />
+            </Link>
+            <br />
+            <Link to="https://play.google.com/store/games?hl=en&pli=1">
+              <img
+                src="/Google_Play.png"
+                alt="Google Play"
+                className="w-50 cursor-pointer hover:opacity-80"
+              />
+            </Link>
           </div>
         </div>
       </div>

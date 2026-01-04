@@ -18,7 +18,9 @@ const CarCard = ({ car }) => {
 
   return (
     <motion.div
-      className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white rounded-lg shadow-lg overflow-hidden p-4 flex flex-col relative"
+      className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white 
+             rounded-lg shadow-lg overflow-hidden p-4 
+             flex flex-col relative h-[360px]"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}
@@ -41,7 +43,7 @@ const CarCard = ({ car }) => {
       )}
 
       {/* Car Info */}
-      <div className="flex flex-col gap-1">
+      <div className="fflex flex-col gap-1 flex-1">
         <p className=" text-sm">
           <span className="font-semibold">Car Name:</span> {name}
         </p>
@@ -60,7 +62,9 @@ const CarCard = ({ car }) => {
       {/* View Details Button */}
       <NavLink
         to={`/cardetails/${_id}`}
-        className="mt-4 bg-linear-to-r from-orange-400 to-orange-600 hover:bg-orange-600 text-white font-medium px-4 py-2 rounded text-center"
+        className="mt-4 bg-linear-to-r from-orange-400 to-orange-600 
+             hover:bg-orange-600 text-white font-medium 
+             px-4 py-2 rounded text-center"
       >
         View Details
       </NavLink>
