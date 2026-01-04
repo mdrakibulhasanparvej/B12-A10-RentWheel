@@ -5,6 +5,16 @@ import { AuthContext } from "../../proviedrs/AuthProvider";
 import { toast } from "react-toastify";
 import { FaEye, FaEyeSlash, FaGoogle } from "react-icons/fa6";
 
+const DEMO_USER = {
+  email: "user@demo.com",
+  password: "R@kibul00",
+};
+
+const DEMO_ADMIN = {
+  email: "admin@demo.com",
+  password: "R@kibul00",
+};
+
 const Login = () => {
   const { login, googlelogin, setUser, checkExistingUser } =
     useContext(AuthContext);
@@ -90,6 +100,24 @@ const Login = () => {
     return messages[errorCode] || "Something went wrong. Please try again.";
   };
 
+  const handleDemoLogin = (role) => {
+    if (role === "user") {
+      setEmail(DEMO_USER.email);
+      setPassword(DEMO_USER.password);
+    }
+
+    if (role === "admin") {
+      setEmail(DEMO_ADMIN.email);
+      setPassword(DEMO_ADMIN.password);
+    }
+
+    toast.info("Demo credentials filled. Click Login 🚀", {
+      position: "top-right",
+      autoClose: 1500,
+      theme: "colored",
+    });
+  };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-500 to-yellow-400 p-4">
       <motion.div
@@ -109,6 +137,7 @@ const Login = () => {
             </label>
             <input
               type="email"
+              value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Enter your email"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none"
@@ -121,10 +150,12 @@ const Login = () => {
             </label>
             <input
               type={showPassword ? "text" : "password"}
+              value={password}
               onChange={(e) => setPassword(e.target.value)}
               placeholder="Enter your password"
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-orange-400 focus:outline-none"
             />
+
             <button
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
@@ -175,17 +206,35 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full bg-linear-to-r from-orange-400 to-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
+            className="cursor-pointer w-full bg-linear-to-r from-orange-400 to-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
           >
             Login
           </button>
         </form>
         <button
           onClick={handlegooglelogin}
-          className="w-full flex items-center justify-center gap-3 bg-linear-to-r from-orange-400 to-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
+          className="cursor-pointer w-full flex items-center justify-center gap-3 bg-linear-to-r from-orange-400 to-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
         >
           <FaGoogle /> Continue with google
         </button>
+
+        <div className="flex gap-3 mt-3">
+          <button
+            type="button"
+            onClick={() => handleDemoLogin("user")}
+            className="cursor-pointer w-1/2 border border-orange-500 text-orange-500 py-2 rounded-lg font-medium hover:bg-orange-50 transition"
+          >
+            Demo User
+          </button>
+
+          <button
+            type="button"
+            onClick={() => handleDemoLogin("admin")}
+            className="cursor-pointer w-1/2 border border-orange-500 text-orange-500 py-2 rounded-lg font-medium hover:bg-orange-50 transition"
+          >
+            Demo Admin
+          </button>
+        </div>
 
         <p className="text-center text-gray-600 mt-4 text-sm">
           Don't have an account?{" "}

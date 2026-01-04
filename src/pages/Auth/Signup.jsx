@@ -167,14 +167,14 @@ const Signup = () => {
 
           <button
             type="submit"
-            className="w-full bg-linear-to-r from-orange-400 to-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
+            className="cursor-pointer w-full bg-linear-to-r from-orange-400 to-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
           >
             Register
           </button>
         </form>
         <button
           onClick={handlegooglelogin}
-          className="w-full mt-5 flex items-center justify-center gap-3 bg-linear-to-r from-orange-400 to-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
+          className="cursor-pointer w-full mt-5 flex items-center justify-center gap-3 bg-linear-to-r from-orange-400 to-orange-600 text-white py-2 rounded-lg font-semibold hover:bg-orange-600 transition-all duration-300"
         >
           <FaGoogle /> Continue with google
         </button>
