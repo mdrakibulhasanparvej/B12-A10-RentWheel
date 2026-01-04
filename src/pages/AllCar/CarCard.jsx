@@ -20,7 +20,7 @@ const CarCard = ({ car }) => {
     <motion.div
       className="bg-white dark:bg-gray-800 text-gray-800 dark:text-white 
              rounded-lg shadow-lg overflow-hidden p-4 
-             flex flex-col relative h-[360px]"
+             flex flex-col relative h-[360px] hover:cursor-pointer"
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4 }}

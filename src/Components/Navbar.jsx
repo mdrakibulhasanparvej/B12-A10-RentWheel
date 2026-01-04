@@ -51,19 +51,13 @@ const Navbar = () => {
   const links = (
     <>
       <li>
-        <MyLinks to="/">
-          <IoHome />
-          Home
-        </MyLinks>
+        <MyLinks to="/">Home</MyLinks>
       </li>
       <li>
-        <MyLinks to="/all-cars">
-          <PiCarSimpleFill />
-          All Cars
-        </MyLinks>
+        <MyLinks to="/all-cars">All Cars</MyLinks>
       </li>
       <li>
-        <MyLinks to="/aboutus">About Us</MyLinks>
+        <MyLinks to="/aboutus"> About Us</MyLinks>
       </li>
       <li>
         <MyLinks to="/contactus">Contact Us</MyLinks>
