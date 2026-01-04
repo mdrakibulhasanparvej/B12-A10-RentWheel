@@ -5,6 +5,7 @@ import Loading from "../../Components/Loading";
 import CarNotFound from "../error/CarNotFound";
 import useTitle from "../../hooks/useTitle";
 import Pagination from "../../Components/Shared/pagination/Pagination";
+import BrowseCarsSkeleton from "../../Components/Skeleton/BrowseCarsSkeleton";
 
 const categories = [
   "All",
@@ -41,7 +42,9 @@ const BrowseCars = () => {
     keepPreviousData: true,
   });
 
-  if (isLoading) return <Loading />;
+  // skeleton loading
+  if (isLoading) return <BrowseCarsSkeleton />;
+
   if (isError) return <CarNotFound />;
 
   const cars = data?.cars || [];
@@ -105,7 +108,7 @@ const BrowseCars = () => {
       </div>
 
       {/* Cars */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
         {cars.map((car) => (
           <CarCard key={car._id} car={car} />
         ))}
